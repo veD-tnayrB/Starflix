@@ -1,0 +1,28 @@
+@use './variables';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: variables.$White;
+    font-size: 1rem;
+    font-family: 'Red Hat Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+button {
+    background: transparent;
+    border-radius: none;
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: none;
+    outline: transparent;
+}

@@ -1,0 +1,132 @@
+@use '../../../../assets/scss/variables';
+
+.sign-up-page {
+    background: url('../background-image.jpeg') no-repeat top;
+    box-shadow: inset 0 0 10rem 5rem variables.$Black;
+    object-fit: cover;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .sign-up-card {
+        box-shadow: 0 0 5rem 1rem variables.$Black;
+        width: 45%;
+        min-width: 40rem;
+
+        display: flex;
+
+        .ilustrative-img {
+            background: url('../ilustrative-image.jpeg') no-repeat center left;
+            object-fit: cover;
+            width: 45%;
+        }
+
+        .action-container {
+            background: variables.$Dark-Gray;
+            width: 55%;
+            padding: 1.5rem;
+
+            .welcome-container {
+                margin: 0 0 1rem 0;
+
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            .sign-up-form {
+                display: flex;
+                flex-direction: column;
+
+                .basic-info {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .input-container {
+                        width: calc(95% / 2);
+
+                        input {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .input-container {
+                    margin: .5rem 0;
+
+
+                    .input {
+                        background: variables.$White;
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        input {
+                            background: transparent;
+                            width: 100%;
+                            padding: .5rem .5rem;
+
+                            &::placeholder {
+                                font-size: .9rem;
+                            }
+                        }
+
+                        .icon {
+                            color: variables.$Black;
+                        }
+
+                        .check-icon {
+                            color: green;
+                        }
+
+                        .block-icon {
+                            color: green;
+                        }
+                    }
+                }
+
+                .loggin {
+                    font-size: .8rem;
+                    margin: .5rem 0;
+
+                    .loggin-link {
+                        color: variables.$Blue;
+
+                        &::before {
+                            content: " ";
+                        }
+                    }
+                }
+
+                .sign-up-button {
+                    background: variables.$Red;
+                    cursor: pointer;
+                    margin: .5rem 0;
+                    padding: .5rem 2rem;
+                    transition: background .2s linear;
+
+                    span {
+                        color: variables.$White;
+                    }
+
+                    &:hover {
+                        background: variables.$Hovered-Red;
+                    }
+
+                    &:active {
+                        background: variables.$Red;
+                    }
+
+                    &:disabled {
+                        opacity: .5;
+                    }
+                }
+
+            }
+        }
+    }
+}
