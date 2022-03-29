@@ -33,10 +33,15 @@ const Input = ({ label, input, value, onChange, isCorrect, errorMessage }) => {
             </div>
 
             {
-                isCorrect ||
-                <span className="error-message">
-                    {errorMessage}
-                </span>
+                value !== '' && (
+                    isCorrect ||
+                    
+                    <div className="error-container">
+                        <span className="error-message">
+                            {errorMessage}
+                        </span>
+                    </div>
+                )
             }
 
         </div>

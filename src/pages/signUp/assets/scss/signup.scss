@@ -4,6 +4,8 @@
     background: url('../background-image.jpeg') no-repeat top;
     box-shadow: inset 0 0 10rem 5rem variables.$Black;
     object-fit: cover;
+
+    min-width: fit-content;
     height: 100vh;
 
     display: flex;
@@ -55,18 +57,20 @@
                 }
 
                 .input-container {
-                    margin: .5rem 0;
+                    margin: .4rem 0;
 
 
                     .input {
                         background: variables.$White;
                         width: 100%;
+
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
 
                         input {
                             background: transparent;
+
                             width: 100%;
                             padding: .5rem .5rem;
 
@@ -77,15 +81,21 @@
 
                         .icon {
                             color: variables.$Black;
+                            font-size: 1.5rem;
                         }
 
                         .check-icon {
-                            color: green;
+                            color: variables.$Green;
                         }
 
                         .block-icon {
-                            color: green;
+                            color: variables.$Red;
                         }
+                    }
+
+                    .error-container {
+                        color: variables.$Hovered-Red;
+                        font-size: .9rem;
                     }
                 }
 
@@ -100,6 +110,12 @@
                             content: " ";
                         }
                     }
+                }
+
+                .error-message {
+                    color: variables.$Hovered-Red;
+                    font-size: .9rem;
+                    margin: -.5rem 0 0 0;
                 }
 
                 .sign-up-button {
@@ -126,6 +142,42 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+
+@media (max-width: 750px) {
+    .sign-up-page {
+        .sign-up-card {
+            width: 60%;
+            min-width: 20rem;
+
+            .ilustrative-img {
+                display: none;
+            }
+
+            .action-container {
+                width: 100%;
+
+                .sign-up-form {
+                    .input-container {
+                        .error-container {
+                            font-size: .98rem;
+                        }
+                    }
+
+                    .loggin {
+                        font-size: .9rem;
+                    }
+
+                    .sign-up-button {
+                        
+                        font-size: 1rem;
+                        font-weight: 700;
+                   }
+                }
             }
         }
     }

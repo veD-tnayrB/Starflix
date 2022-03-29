@@ -1,33 +1,39 @@
-const registerUser = (name, lastName, userName, password, userID) => {
-    const isRegisteredUsersCreated = localStorage.getItem('registeredUsers');
-    const currentRegisteredUsers = JSON.parse(localStorage.getItem('registeredUsers'));
-    isRegisteredUsersCreated && localStorage.setItem('registeredUsers', 
-    [...currentRegisteredUsers, {
-        name: name,
-        lastName: lastName,
-        username: userName,
-        password: password,
-        userID: userID
-    }]);
+const storageName = 'loggedUsers';
+
+export const createLocalStorage = () => {
+    if (!localStorage.getItem(storageName)) {
+        localStorage.setItem(storageName, '[]');
+    }
 }
 
-const isTheRegisteredUser = (userName, userID) => {
-    const isRegisteredUsersCreated = localStorage.getItem('registeredUsers');
-    const registeredUsers = isRegisteredUsersCreated && JSON.parse(localStorage.getItem('registeredUsers'));
-    return registeredUsers.some(user => user.name === userName && user.id === userID);
+export const getAllUsers = () => {
+    createLocalStorage();
+    const currentUsers = JSON.parse(localStorage.getItem(storageName));
+    return currentUsers;
 }
 
-const getAllUsersData = () => {
-    const isRegisteredUsersCreated = localStorage.getItem('registeredUsers');
-    const registeredUsers = isRegisteredUsersCreated && JSON.parse(localStorage.getItem('registeredUsers'));
-
-    return registeredUsers;
+export const getUser = (userName) => {
+    const currentUsers = getAllUsers();
+    return currentUsers.find(user => userName === user.userName);
 }
 
-const getUserData = (userName, userID) => {
-    const isRegisteredUsersCreated = localStorage.getItem('registeredUsers');
-    const registeredUsers = isRegisteredUsersCreated && JSON.parse(localStorage.getItem('registeredUsers'));
-    return registeredUsers.find(user => user.id === userID && user.username === userName);
+export const isExistingUser = ({ userName }) => {
+    const currentUsers = getAllUsers();
+    return currentUsers.some(user => user.userName === userName);
 }
 
-export { registerUser, isTheRegisteredUser, getAllUsersData, getUserData };
+export const saveUser = (user) => {
+    const currentUsers = getAllUsers();
+
+    localStorage.setItem(storageName, JSON.stringify(
+        [...currentUsers,
+            { ...user }
+        ]
+    ))
+}
+
+export const deleteUser = (userName) => {
+    const currentUsers = getAllUsers();
+    const newUserList = currentUsers.filter(user => userName !== user.userName);
+    localStorage.setItem(storageName, newUserList);
+}

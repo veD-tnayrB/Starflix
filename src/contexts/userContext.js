@@ -1,58 +1,37 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { generateSessionID } from '../services/api/';
-import { registerUser } from '../services/users';
-
 const UserContext = createContext();
 
+const initialUserValue = {
+    name: '',
+    lastName: '',
+    userName: '',
+    userImage: '',
+    password: '',
+    id: ''
+}
+
 const UserProvider = ({ children }) => {
-    const navigateTo = useNavigate();
-    const [currentUser, setCurrentUser] = useState({
-        username: '',
-        password: '',
-        sessionID: ''
-    });
+    const [currentUser, setCurrentUser] = useState(initialUserValue);
+    console.log(currentUser);
 
-    useEffect(() => {
-        //const logedUsers = localStorage.getItem('logedUsers');
-        //localStorage.setItem('logedUsers', JSON.stringify([...logedUsers, currentUser]));
-        console.log(currentUser)
-    }, [currentUser])
-    
-    // You got to fix this down below, i mean, the localStorage must be fixed
 
-    const signUp = async (name, lastName, userName, password) => {
-        const getUserID = '12313123123'; //await generateSessionID();
-        registerUser(name, lastName, userName, password, getUserID());
-    }
-
-    const logUser = (username, password) => {
-        const logedUsers = JSON.parse(localStorage.getItem('logedUsers'));
-        const user = logedUsers.find(user => user.username === username && user.password === password);
-        const userIndex = logedUsers.indexOf(user);
-
-        if (user) {
-            setCurrentUser({
-                username: username,
-                password: password,
-                sessionID: logedUsers[userIndex].sessionID
-            })
-
-            navigateTo('/home');
+    const setLoggedUser = ({ name, lastName, userName, userImage, password, id }) => (
+        {
+            name: name,
+            lastName: lastName,
+            userName: userName,
+            userImage: userImage,
+            password: password,
+            id: id
         }
-    }
+    )
 
     const logout = () => {
-        setCurrentUser({
-            username: '',
-            password: '',
-            sessionID: ''
-        })
+        setCurrentUser(initialUserValue);
     }
 
-
     return (
-        <UserContext.Provider value={{currentUser, signUp, logUser, logout}}>
+        <UserContext.Provider value={{currentUser, logout, setLoggedUser}}>
             {children}
         </UserContext.Provider>
     )

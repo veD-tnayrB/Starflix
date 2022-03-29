@@ -1,0 +1,156 @@
+@use '../../../../assets/scss/variables';
+
+.log-in-page {
+    background: variables.$Gray;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .action-container {
+        height: 60%;
+        min-height: 16rem;
+        max-height: 55rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .back-button {
+            background: variables.$Light-Gray;
+            box-shadow: 0 0 3rem 1px variables.$Black;
+            font-weight: 700;
+            color: variables.$White;
+            cursor: pointer;
+
+            padding: .8rem 3rem;
+
+            transition: transform .2s linear;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(1);
+            }
+        }
+
+        .user-list {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+            li {
+                .card-container {
+                    margin: 0 1rem;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .image-container {
+                        box-shadow: 0 0 3rem 1px variables.$Black;
+                        border: 0.2rem solid variables.$Black;
+                        cursor: pointer;
+
+                        width: 12rem;
+                        height: 10rem;
+
+                        margin: .8rem 0;
+                        transition: transform .2s linear, box-shadow .2s linear;
+
+                        &:hover {
+                            transform: scale(1.05);
+                            box-shadow: 0 0 2rem .5px variables.$Black;
+                        }
+                    }
+
+                    span {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .log-in-form-container {
+        background: variables.$Dark-Gray;
+
+        padding: 2.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            margin: .5rem 0 1rem 0;
+        }
+
+        .log-in-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .user-image {
+                border: .1rem solid variables.$Black;
+                
+                width: 15rem;
+                height: 12rem;
+
+                margin: 1rem 0;
+            }
+
+            .input-container {
+                .input {
+                    background: variables.$White;
+                    width: 100%;
+
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    input {
+                        background: transparent;
+
+                        width: 100%;
+                        padding: .5rem .5rem;
+
+                        &::placeholder {
+                            font-size: .9rem;
+                        }
+                    }
+
+                    .icon {
+                        color: #000;
+                        font-size: 1.5rem;
+                    }
+
+                    .check-icon {
+                        color: variables.$Green;
+                    }
+
+                    .block-icon {
+                        color: variables.$Red;
+                    }
+                }
+
+                .error-container {
+                    font-size: 1rem;
+                }
+            }
+
+            button {
+                background: variables.$Black;
+                color: variables.$White;
+                padding: .5rem 2rem;
+                margin: .5rem 0;
+            }
+        }
+    }
+}
