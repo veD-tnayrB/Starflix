@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import uniqid from 'uniqid';
 
-import Input from '../../../components/Input';
-import { UserContext } from '../../../contexts/userContext';
-import { createLocalStorage, isExistingUser, saveUser } from '../../../services/users';;
+import Input from '../../../../components/input';
+import { UserContext } from '../../../../contexts/userContext';
+import { createLocalStorage, isExistingUser, saveUser, getAllUsers, getUserRandomImage } from '../../../../services/users';;
+
 
 const RegisterForm = () => {
     const [userData, setUserData] = useState({
@@ -12,8 +14,8 @@ const RegisterForm = () => {
         userName: '',
         password: '',
         confirmPassword: '',
-        userImage: '',
-        id: ''
+        userImage: getUserRandomImage(),
+        id: uniqid()
     })
     const navigateTo = useNavigate();
     const { setLoggedUser } = useContext(UserContext);
@@ -42,7 +44,7 @@ const RegisterForm = () => {
 
         saveUser(userData);
         setLoggedUser(() => userData);
-        navigateTo(`/log-in/${userData.userName}`);
+        navigateTo('/home');
 
     }
 
@@ -128,15 +130,18 @@ const RegisterForm = () => {
                     }}
                 />
 
-                <span className="loggin">
-                    Already logged in to this device?
-                    <Link
-                     className="loggin-link"
-                     to="/log-in"
-                    >
-                        Log in
-                    </Link>
-                </span>
+                {
+                    getAllUsers().length > 0 &&
+                    <span className="loggin">
+                        Already logged in to this device?
+                        <Link
+                         className="loggin-link"
+                         to="/log-in"
+                        >
+                            Log in
+                        </Link>
+                    </span> 
+                }
 
                 {
                     thisUserAlreadyExist &&
@@ -146,7 +151,7 @@ const RegisterForm = () => {
                 }
 
                 <button
-                 className="sign-up-button"
+                 className="main-button"
                  disabled={thisUserAlreadyExist || isSomethingWrong}
                 >
                     <span>

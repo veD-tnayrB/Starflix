@@ -57,46 +57,8 @@
                 }
 
                 .input-container {
-                    margin: .4rem 0;
-
-
-                    .input {
-                        background: variables.$White;
-                        width: 100%;
-
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        input {
-                            background: transparent;
-
-                            width: 100%;
-                            padding: .5rem .5rem;
-
-                            &::placeholder {
-                                font-size: .9rem;
-                            }
-                        }
-
-                        .icon {
-                            color: variables.$Black;
-                            font-size: 1.5rem;
-                        }
-
-                        .check-icon {
-                            color: variables.$Green;
-                        }
-
-                        .block-icon {
-                            color: variables.$Red;
-                        }
-                    }
-
-                    .error-container {
-                        color: variables.$Hovered-Red;
-                        font-size: .9rem;
-                    }
+                    margin: .3rem 0;
+                        
                 }
 
                 .loggin {
@@ -117,31 +79,6 @@
                     font-size: .9rem;
                     margin: -.5rem 0 0 0;
                 }
-
-                .sign-up-button {
-                    background: variables.$Red;
-                    cursor: pointer;
-                    margin: .5rem 0;
-                    padding: .5rem 2rem;
-                    transition: background .2s linear;
-
-                    span {
-                        color: variables.$White;
-                    }
-
-                    &:hover {
-                        background: variables.$Hovered-Red;
-                    }
-
-                    &:active {
-                        background: variables.$Red;
-                    }
-
-                    &:disabled {
-                        opacity: .5;
-                    }
-                }
-
             }
         }
     }
@@ -172,8 +109,7 @@
                         font-size: .9rem;
                     }
 
-                    .sign-up-button {
-                        
+                    .main-button {
                         font-size: 1rem;
                         font-weight: 700;
                    }

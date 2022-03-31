@@ -12,17 +12,63 @@ body {
     font-family: 'Red Hat Display', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-button {
-    background: transparent;
-    border-radius: none;
-    border: none;
-}
-
 li {
     list-style: none;
 }
 
-input {
+
+// Defined Buttons
+
+button {
+    background: transparent;
+    border-radius: none;
+    cursor: pointer;
     border: none;
-    outline: transparent;
+}
+
+.main-button {
+    background: variables.$Red;
+    color: variables.$White;
+
+    margin: .5rem 0;
+    padding: .5rem 2rem;
+
+    transition: all .2s linear;
+
+    &:hover {
+        background: variables.$Hovered-Red;
+    }
+
+    &:active {
+        background: variables.$Red;
+    }
+
+    &:disabled {
+        opacity: .5;
+    }
+}
+
+.secondary-button {
+    background: transparent;
+    border: .1rem solid variables.$White;
+    color: variables.$White;
+    font-size: 1rem;
+
+    padding: .5rem 2rem;
+
+    transition: all .2s linear;
+    
+
+    &:hover {
+        border: .1rem solid variables.$Hovered-Gray;
+    }
+
+    &:active {
+        border: .1rem solid variables.$Light-Gray;
+    }
+
+    &:disabled {
+        opacity: .5;
+
+    }
 }

@@ -1,22 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ userData }) => {
     const navigateTo = useNavigate();
 
     const redirectUser = () => {
-        navigateTo(`/log-in/${user.userName}`);
+        navigateTo(userData.userName);
     }
 
     return (
         <li onClick={redirectUser}>
             <div className="card-container">
-                <div 
-                 className="image-container"
-                >
+                <div className="image-container">
+                    <img src={userData.userImage} className="user-img" />
                 </div>
 
-                <span>{user.userName}</span>
+                <span>{userData.userName}</span>
             </div>
         </li>
     )

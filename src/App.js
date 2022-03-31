@@ -5,7 +5,7 @@ import './assets/scss/app.scss';
 import Home from './pages/home';
 import SignUp from './pages/signUp';
 import LogIn from './pages/LogIn';
-import LoginForm from './pages/LogIn/components/LoginForm';
+import LoginForm from './pages/LogIn/components/loginForm';
 
 import ProtectedRoutes from './components/ProtectedRoutes';
 

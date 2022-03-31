@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 const UserContext = createContext();
 
 const initialUserValue = {
@@ -12,7 +12,6 @@ const initialUserValue = {
 
 const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(initialUserValue);
-    console.log(currentUser);
 
 
     const setLoggedUser = ({ name, lastName, userName, userImage, password, id }) => (

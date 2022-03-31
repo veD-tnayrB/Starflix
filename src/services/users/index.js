@@ -37,3 +37,7 @@ export const deleteUser = (userName) => {
     const newUserList = currentUsers.filter(user => userName !== user.userName);
     localStorage.setItem(storageName, newUserList);
 }
+
+export const getUserRandomImage = () => {
+    return `https://picsum.photos/600`;
+}

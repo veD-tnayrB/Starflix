@@ -1,0 +1,49 @@
+@use '../../../../assets/scss/variables';
+
+.log-in-form-container {
+    .modal-window {
+        .login-card {
+            background: variables.$Dark-Gray;
+                
+            form {
+                width: 100%;
+                padding: 1.5rem;
+
+                display: flex;
+                flex-direction: column;
+
+                .image-container {
+                    background: variables.$Gray;
+
+                    width: 15rem;
+                    height: 13rem;
+
+                    align-self: center;
+
+                    .user-img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                h1 {
+                    margin: 1rem 0 .5rem 0;
+                }
+
+                .main-button {
+                    font-size: 1rem;
+                    margin: .5rem 0 .5rem 0;
+                }
+
+                .secondary-button {
+                    border: none;
+                    margin: -.2rem 0;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,13 +1,21 @@
 import React from 'react';
+
 import BlockIcon from '@mui/icons-material/Block';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+
+import './input.scss';
 
 const Input = ({ label, input, value, onChange, isCorrect, errorMessage }) => {
     
     return (
         <div className="input-container">
             <label htmlFor={input.name}>{label}</label>
-            <div className="input">
+            <div 
+             className="input"
+             style={{
+                border: `.1rem solid ${value !== '' && (isCorrect ? "#007e06" : "#c90202")}`
+             }}
+            >
                 <input
                  type="text"
                  id={input.name}
