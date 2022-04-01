@@ -12,18 +12,19 @@ const initialUserValue = {
 
 const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(initialUserValue);
+    console.log(currentUser)
 
 
-    const setLoggedUser = ({ name, lastName, userName, userImage, password, id }) => (
-        {
+    const setLoggedUser = ({ name, lastName, userName, userImage, password, id }) => {
+        setCurrentUser({
             name: name,
             lastName: lastName,
             userName: userName,
             userImage: userImage,
             password: password,
             id: id
-        }
-    )
+        })
+    }
 
     const logout = () => {
         setCurrentUser(initialUserValue);

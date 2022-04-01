@@ -11,7 +11,11 @@ const LogIn = () => {
     const navigateTo = useNavigate();
 
     useEffect(() => {
-        setLoggedUsersList(getAllUsers());
+        const userInfo = getAllUsers();
+
+        userInfo.length > 0 ? 
+        setLoggedUsersList(userInfo) : 
+        navigateTo('users-not-found');
     }, [])
 
     const usersElements = loggedUsersList.map(user => (
@@ -21,22 +25,23 @@ const LogIn = () => {
         />
     ))
 
-    return (
+    return (  
         <main className="log-in-page">
             <div className="action-container">
                 <ol className="user-list">
                     {usersElements}
-                </ol> 
+                </ol>
 
-                <button 
-                 className="secondary-button"
-                 onClick={() => navigateTo("/")}
+                <button
+                    className="secondary-button"
+                    onClick={() => navigateTo("/signup")}
                 >
                     Sign Up
                 </button>
             </div>
             <Outlet />
         </main>
+                
     )
 }
 

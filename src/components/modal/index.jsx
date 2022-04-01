@@ -1,14 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import './modal.scss';
 
-const Modal = ({ children }) => {
+const Modal = ({ children, isCanceleable = true }) => {
     const navigateTo = useNavigate();
 
     const closeModal = (event) => {
-        const { className } = event.target;
-        
-        if (className === 'modal-window') {
-            navigateTo(-1, { replace: true });
+        if (isCanceleable) {
+            const { className } = event.target;
+
+            if (className === 'modal-window') {
+                navigateTo(-1, { replace: true });
+            }
         }
     }
     

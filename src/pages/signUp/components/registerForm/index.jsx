@@ -15,11 +15,11 @@ const RegisterForm = () => {
         password: '',
         confirmPassword: '',
         userImage: getUserRandomImage(),
-        id: uniqid()
+        id: uniqid() // This generate a uniq id for each user
     })
     const navigateTo = useNavigate();
     const { setLoggedUser } = useContext(UserContext);
-    const thisUserAlreadyExist = useMemo(() => isExistingUser(userData), [userData.userName])
+    const thisUserAlreadyExist = useMemo(() => isExistingUser(userData), [userData.userName]);
 
 
     // Create the local storage if it doesnt already exists
@@ -43,16 +43,16 @@ const RegisterForm = () => {
         event.preventDefault();
 
         saveUser(userData);
-        setLoggedUser(() => userData);
+        setLoggedUser(userData);
         navigateTo('/home');
 
     }
 
     // This are the rules for each input value
-    const isNameCorrect = /^[A-Z]{1,1}[a-z]{2}/.test(userData.name);
-    const isLastNameCorrect = /^[A-Z]{1,1}[a-z]{2}/.test(userData.lastName);
-    const isUserNameCorrect = /[\w]{5}/.test(userData.userName);
-    const isPasswordCorrect = /[\w]{8}/.test(userData.password);
+    const isNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(userData.name);
+    const isLastNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(userData.lastName);
+    const isUserNameCorrect = /^[\w]{5}[\S]*$/.test(userData.userName);
+    const isPasswordCorrect = /^[\w]{8}[\S]*$/.test(userData.password);
     const isPasswordEqual = userData.password === userData.confirmPassword;
 
     // Disable the "sign up button" if some rule is false
@@ -136,7 +136,7 @@ const RegisterForm = () => {
                         Already logged in to this device?
                         <Link
                          className="loggin-link"
-                         to="/log-in"
+                         to="/login"
                         >
                             Log in
                         </Link>

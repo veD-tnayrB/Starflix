@@ -18,15 +18,7 @@ const LoginForm = () => {
 
 
     useEffect(() => {
-        const userInfo = getUser(userName)
-
-        if (!userInfo) {
-            navigateTo('/', { replace: true });
-
-        } else {
-            setUserData(userInfo);
-
-        }
+        setUserData(getUser(userName))
     }, [])
     
     const updateValue = (event) => {

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 const ProtectedRoutes = () => {
-    const isAuth = useAuth();
+    const isUserLogged = useAuth();
 
     return (
-        <div>
+        <>
             {
-                isAuth ? <Outlet /> : <Navigate to='/' />
+                isUserLogged ? <Outlet /> : <Navigate to="/" />
             }
-        </div>
+        </>
     )
 }
 
