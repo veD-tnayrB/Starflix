@@ -5,8 +5,8 @@
     box-shadow: inset 0 0 10rem 5rem variables.$Black;
     object-fit: cover;
 
-    min-width: fit-content;
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
 
     display: flex;
     justify-content: center;
