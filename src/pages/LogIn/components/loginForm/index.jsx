@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import Input from '../../../../components/input';
-import Modal from '../../../../components/modal';
-import { UserContext } from '../../../../contexts/userContext';
-import { getUser } from '../../../../services/users/';
+import Input from 'components/input';
+import Modal from 'components/modal';
+import { UserContext } from 'contexts/userContext';
+import { getUser } from 'services/users/';
 
 import './loginform.scss';
 

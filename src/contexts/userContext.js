@@ -12,8 +12,6 @@ const initialUserValue = {
 
 const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(initialUserValue);
-    console.log(currentUser)
-
 
     const setLoggedUser = ({ name, lastName, userName, userImage, password, id }) => {
         setCurrentUser({

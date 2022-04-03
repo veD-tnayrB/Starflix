@@ -3,7 +3,7 @@ import { useNavigate, Outlet } from 'react-router-dom';
 
 import UserCard from './components/userCard';
 
-import { getAllUsers } from '../../services/users';
+import { getAllUsers } from 'services/users';
 import './assets/scss/login.scss';
 
 const LogIn = () => {

@@ -2,9 +2,9 @@ import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-import Input from '../../../../components/input';
-import { UserContext } from '../../../../contexts/userContext';
-import { createLocalStorage, isExistingUser, saveUser, getAllUsers, getUserRandomImage } from '../../../../services/users';;
+import Input from 'components/input';
+import { UserContext } from 'contexts/userContext';
+import { createLocalStorage, isExistingUser, saveUser, getAllUsers, getUserRandomImage } from 'services/users';
 
 
 const RegisterForm = () => {

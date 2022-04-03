@@ -13,7 +13,7 @@ const Input = ({ label, input, value, onChange, isCorrect, errorMessage }) => {
             <div 
              className="input"
              style={{
-                border: `.1rem solid ${value !== '' && (isCorrect ? "#007e06" : "#c90202")}`
+                border: `.2rem solid ${value !== '' && (isCorrect ? "#007e06" : "#c90202")}`
              }}
             >
                 <input
