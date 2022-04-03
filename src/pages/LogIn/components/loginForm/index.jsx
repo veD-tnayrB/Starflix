@@ -29,7 +29,7 @@ const LoginForm = () => {
 
     const handleLogin = () => {
         setLoggedUser(userData);
-        navigateTo('/home', { replace: true });
+        navigateTo('/', { replace: true });
     }
 
 
@@ -39,7 +39,7 @@ const LoginForm = () => {
                 <article className="login-card">
                     <form onSubmit={handleLogin}>
                         <div className="image-container">
-                            <img src={userData.userImage} className="user-img" />
+                            <img src={userData.img} className="user-img" />
                         </div>
                         <h1>{userData.userName}</h1>
                         <Input

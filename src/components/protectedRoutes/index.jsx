@@ -8,7 +8,7 @@ const ProtectedRoutes = () => {
     return (
         <>
             {
-                isUserLogged ? <Outlet /> : <Navigate to="/" />
+                isUserLogged ? <Outlet /> : <Navigate to="/signup" />
             }
         </>
     )

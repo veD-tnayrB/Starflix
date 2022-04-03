@@ -14,7 +14,7 @@ const RegisterForm = () => {
         userName: '',
         password: '',
         confirmPassword: '',
-        userImage: getUserRandomImage(),
+        img: getUserRandomImage(),
         id: uniqid() // This generate a uniq id for each user
     })
     const navigateTo = useNavigate();
@@ -38,13 +38,13 @@ const RegisterForm = () => {
         ))
     }
 
-    // Save the user in localStorage and send it to /home
+    // Save the user in localStorage and send it to /
     const handleSubmit = (event) => {
         event.preventDefault();
 
         saveUser(userData);
         setLoggedUser(userData);
-        navigateTo('/home');
+        navigateTo('/');
 
     }
 

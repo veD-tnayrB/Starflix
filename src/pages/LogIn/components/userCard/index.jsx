@@ -12,7 +12,7 @@ const UserCard = ({ userData }) => {
         <li onClick={redirectUser}>
             <div className="card-container">
                 <div className="image-container">
-                    <img src={userData.userImage} className="user-img" />
+                    <img src={userData.img} className="user-img" />
                 </div>
 
                 <span>{userData.userName}</span>
