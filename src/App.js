@@ -12,6 +12,7 @@ import UsersNotFound from './pages/LogIn/components/usersNotFound';
 import './assets/scss/app.scss';
 
 
+
 const App = () => {
 
     return (
@@ -26,7 +27,9 @@ const App = () => {
 
 
                 <Route element={<ProtectedRoutes />}>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home />}>
+                        
+                    </Route>
                     <Route path="/*" element={<Navigate to="/home" />} />
                 </Route>
         </Routes>

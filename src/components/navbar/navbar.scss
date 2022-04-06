@@ -85,6 +85,7 @@
                             box-shadow: 0 0 2rem .2px variables.$Light-Gray;
                             padding: .5rem;
 
+                            // min-width: fit-content;
                             width: 10rem;
 
                             position: absolute;
@@ -94,8 +95,10 @@
                             flex-direction: column;
 
                             h2 {
+                                border-bottom: .1rem solid variables.$Light-Gray;
                                 font-size: 1.2rem;
-                                padding: 0 .5rem;
+
+                                padding: 0 .5rem .8rem .5rem;
                                 margin: .5rem 0 .8rem 0;
                             }
 
@@ -135,6 +138,16 @@
             ul {
                 flex-direction: column;
 
+                .logo-container {
+                    .logo-icon {
+                        font-size: 1.8rem;
+                    }
+
+                    .logo-text {
+                        font-size: 1.2rem;
+                    }
+                }
+
                 .options-container {
                     margin: .5rem 0;
                     padding: 0 1rem;
@@ -142,6 +155,9 @@
                     ul {
                         flex-direction: row;
 
+                        .options {
+                            margin: 0 .5rem;
+                        }
                     }
                 }
             }

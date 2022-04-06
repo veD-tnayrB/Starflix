@@ -1,0 +1,1 @@
+export { getPopular } from '.getPopular';
