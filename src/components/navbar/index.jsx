@@ -6,6 +6,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
 
 import { UserContext } from 'contexts/userContext';
+import Modal from 'components/modal';
 
 import './navbar.scss';
 
@@ -34,21 +35,21 @@ const Navbar = () => {
                             <li>
                                 <NavLink
                                     className="options"
-                                    to="movie">
+                                    to="movies">
                                     Movies
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
                                     className="options"
-                                    to="tv">
-                                    TV
+                                    to="series">
+                                    Series
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
                                     className="options"
-                                    to="person">
+                                    to="people">
                                     People
                                 </NavLink>
                             </li>

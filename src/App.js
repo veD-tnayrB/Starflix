@@ -1,17 +1,23 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
-import ProtectedRoutes from './components/protectedRoutes';
-import Home from './pages/home';
-import SignUp from './pages/signUp';
+// Sigh up component for routes
+import SignUp from 'pages/signUp';
 
-import LogIn from './pages/LogIn';
-import LoginForm from './pages/LogIn/components/loginForm';
-import UsersNotFound from './pages/LogIn/components/usersNotFound';
+// Login components for routes
+import LogIn from 'pages/LogIn';
+import LoginForm from 'pages/LogIn/components/loginForm';
+import UsersNotFound from 'pages/LogIn/components/usersNotFound';
+
+// Main components for routes
+import ProtectedRoutes from 'components/protectedRoutes';
+import Main from 'pages/main';
+import Home from 'pages/main/pages/home';
+import Movies from 'pages/main/pages/movies';
+import Series from 'pages/main/pages/series';
+import People from 'pages/main/pages/people';
 
 import './assets/scss/app.scss';
-
-
 
 const App = () => {
 
@@ -22,15 +28,15 @@ const App = () => {
                     <Route path=":userName" element={<LoginForm />} />
                     <Route path="users-not-found" element={<UsersNotFound />} />
                 </Route>
-                <Route path="/*" element={<Navigate to="/signup" />} />
-                
-
 
                 <Route element={<ProtectedRoutes />}>
-                    <Route path="/" element={<Home />}>
-                        
+                    <Route path="/" element={<Main />}>
+                        <Route path="home" element={<Home />} />
+                        <Route path="movies" element={<Movies />} />
+                        <Route path="series" element={<Series />} />
+                        <Route path="people" element={<People />} />
+                        <Route path="/*" element={<Navigate to="home" />} />
                     </Route>
-                    <Route path="/*" element={<Navigate to="/home" />} />
                 </Route>
         </Routes>
     )
