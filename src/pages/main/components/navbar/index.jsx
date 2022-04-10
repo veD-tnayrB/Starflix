@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PersonIcon from '@mui/icons-material/Person';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 import { UserContext } from 'contexts/userContext';
 import Modal from 'components/modal';
@@ -28,7 +28,7 @@ const Navbar = () => {
                             <li>
                                 <NavLink
                                     className="options"
-                                    to="/">
+                                    to="home">
                                     Home
                                 </NavLink>
                             </li>
@@ -76,7 +76,7 @@ const Navbar = () => {
                                             </button>
 
                                             <button>
-                                                <PersonIcon className="icon" />
+                                                <LogoutRoundedIcon className="icon" />
                                                 Log out
                                             </button>
                                         </div>

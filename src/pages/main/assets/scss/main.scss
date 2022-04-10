@@ -1,0 +1,6 @@
+@use 'assets/scss/variables';
+
+.body {
+    background: variables.$Dark-Gray;
+    min-height: 100vh;
+}

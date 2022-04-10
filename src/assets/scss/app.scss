@@ -6,6 +6,18 @@
     padding: 0;
 }
 
+*::-webkit-scrollbar {
+    background: variables.$Black;
+    border-radius: 5rem;
+
+    width: .5rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: variables.$Light-Gray;
+    border-radius: 5rem;
+}
+
 body {
     color: variables.$White;
     font-size: 1rem;

@@ -1,0 +1,24 @@
+@use 'assets/scss/variables';
+
+.home-page {
+    .hero {
+        margin: 0 0 1.5rem 0;
+    }
+
+    section {
+        padding: 0 .2rem;
+
+        .section-title {
+            font-size: 2rem;
+            margin: .5rem 0;
+        }
+
+        ol {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+
+        }
+    }
+}

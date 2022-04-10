@@ -1,0 +1,77 @@
+@use 'assets/scss/variables';
+
+.hero {
+    box-shadow: inset 0 0 8rem 1rem variables.$Black;
+    object-fit: cover;
+
+    height: 80vh;
+    min-height: 25rem;
+    padding: 1.5rem;
+    
+    display: flex;
+    align-items: center;
+
+    .info-container {
+        width: 45%;
+        min-width: 20rem;
+
+        padding: 1.8rem;
+        transition: background .1s linear;
+
+        &:hover {
+            background: variables.$Black;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        .overview-container {
+            height: 8rem;
+            margin: 1rem 0 1.5rem 0;
+
+            overflow-y: scroll;
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+
+        .secondary-button {
+            background: variables.$Black;
+            display: flex;
+            align-items: center;
+
+            .info-icon {
+                margin: 0 .2rem;
+            }
+
+            &:hover {
+                color: variables.$Hovered-Gray;
+                
+            }
+        }
+    }
+}
+
+@media (max-width: 630px) {
+    .hero {
+        height: fit-content;
+        min-height: unset;
+        padding: 1.5rem;
+
+        .info-container {
+            width: 100%;
+            padding: 0;
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .secondary-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+}

@@ -11,3 +11,5 @@ export const basicStructure = (mediaList) => {
 
     return adaptedMediaList;
 }
+
+export default basicStructure;

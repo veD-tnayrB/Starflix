@@ -1,62 +1,91 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { apiImageURL } from 'services/api';
-import { getTrending, getPopular, getUpcoming } from 'services/api/movies';
 
-import Navbar from 'components/navbar';
+import Hero from 'pages/main/components/hero';
+import Card from 'pages/main/components/card';
+
+import { getTrending as getTrendingMovies, getUpcoming as getUpcomingMovies } from 'services/api/movies';
+import { getTrending as getTrendingSeries, getTopRated as getTopRatedSeries } from 'services/api/series';
+
+import './assets/scss/home.scss';
 
 const Home = () => {
     const [mainMovie, setMainMovie] = useState({});
     const [trendingMovies, setTrendingMovies] = useState([]);
-    const [popularMovies, setPopularMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
-
+    const [trendingSeries, setTrendingSeries] = useState([]);
+    const [topRatedSeries, setTopRatedSeries] = useState([]);
+    
     useEffect(() => {
         const getData = async () => {
-            setTrendingMovies(await getTrending());
-            setMainMovie(await getTrending()[0]);
-            setPopularMovies(await getPopular());
-            setUpcomingMovies(await getUpcoming());
+            // Movies
+            const upcomingMovies = await getUpcomingMovies();
+
+            setMainMovie(upcomingMovies[0]);
+            setUpcomingMovies(upcomingMovies);
+            setTrendingMovies(await getTrendingMovies());
+
+            // Series
+            setTrendingSeries(await getTrendingSeries());
+            setTopRatedSeries(await getTopRatedSeries());
         }
 
         getData();
     }, []);
 
-    const trendingList = trendingMovies.map(trendingMovie => (
-        <li key={trendingMovie.id}>
-            <img src={`${apiImageURL}${trendingMovie.poster}`} />
-        </li>
+    const trendingMoviesList = trendingMovies.map(trendingMovie => (
+        <Card 
+         key={trendingMovie.id}
+         item={trendingMovie} 
+        />
     ))
 
-    const popularList = popularMovies.map(popularMovie => (
-        <li key={popularMovie.id}>
-            <img src={`${apiImageURL}${popularMovie.poster}`} />
-        </li>
+    const trendingSeriesList = trendingSeries.map(trendingSerie => (
+        <Card 
+         key={trendingSerie.id}
+         item={trendingSerie} 
+        />
     ))
 
-    const upcomingList = upcomingMovies.map(upcomingMovie => (
-        <li key={upcomingMovie.id}>
-            <img src={`${apiImageURL}${upcomingMovie.poster}`} />
-        </li>
+    const upcomingMoviesList = upcomingMovies.map(upcomingMovie => (
+        <Card
+         key={upcomingMovie.id}
+         item={upcomingMovie}
+        />
     ))
 
-
+    const topRatedSeriesList = topRatedSeries.map(ratedSerie => (
+        <Card
+         key={ratedSerie.id}
+         item={ratedSerie}
+        />
+    ))
 
     return (
-        <>
-            <Navbar />
-            <main>
-                <h2>Trending Movies</h2>
-                <ul>{trendingList}</ul>
+        <main className="home-page">
+            <Hero item={mainMovie} />
 
-                <h2>Popular Movies</h2>
-                <ul>{popularList}</ul>
+            <section>
+                <h3 className="section-title">Trending Movies</h3>
+                <ol>
+                    {trendingMoviesList}
+                </ol>
 
-                <h2>Upcoming Movies</h2>
-                <ul>{upcomingList}</ul>
-            </main>
-            {/* Footer */}
-        </>
+                <h3 className="section-title">Trending Series</h3>
+                <ol>
+                    {trendingSeriesList}
+                </ol>
+
+                <h3 className="section-title">Upcoming Movies</h3>
+                <ol>
+                    {upcomingMoviesList}
+                </ol>
+
+                <h3 className="section-title">Top Rated Series</h3>
+                <ol>
+                    {topRatedSeriesList}
+                </ol>
+            </section>
+        </main>
     )
 }
 
