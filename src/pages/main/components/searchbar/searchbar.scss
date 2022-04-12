@@ -1,0 +1,29 @@
+@use 'assets/scss/variables';
+
+.search-section {
+    padding: 0 1rem;
+
+    form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input-container {
+            width: 100%;
+            
+            .input {
+                input {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .main-button {
+            font-size: 2rem;
+            padding: .4rem 2rem;
+
+            display: flex;
+            align-items: center;
+        }
+    }
+}

@@ -13,8 +13,9 @@
         transition: transform .1s linear;
 
         .img-container {
+            min-height: 19.5rem;
+
             img {
-                min-height: 100%;
                 width: 100%;
                 height: 100%;
             }

@@ -1,18 +1,23 @@
 import React, { useState, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 import { UserContext } from 'contexts/userContext';
-import Modal from 'components/modal';
 
 import './navbar.scss';
 
 const Navbar = () => {
-    const { currentUser } = useContext(UserContext);
+    const { currentUser, logout } = useContext(UserContext);
     const [isUserOptionsOpen, setIsUserOptionsOpen] = useState(false);
+    const navigateTo = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigateTo('/signup')
+    }
 
     return (
         <header className="main-header">
@@ -28,7 +33,7 @@ const Navbar = () => {
                             <li>
                                 <NavLink
                                     className="options"
-                                    to="home">
+                                    to="/">
                                     Home
                                 </NavLink>
                             </li>
@@ -75,7 +80,7 @@ const Navbar = () => {
                                                 Settings
                                             </button>
 
-                                            <button>
+                                            <button onClick={handleLogout}>
                                                 <LogoutRoundedIcon className="icon" />
                                                 Log out
                                             </button>

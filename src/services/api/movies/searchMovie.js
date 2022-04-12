@@ -1,9 +1,8 @@
 import { handleFetch, apiURL, apiKey } from '../index';
 import basicStructure from 'adapters/movies/basicStructure';
 
-export const getPopular = async (page = 1) => {
-    console.log(page)
-    const data = await handleFetch(`${apiURL}movie/popular${apiKey}&page=${page}`);
+export const searchMovie = async (query, page = 1) => {
+    const data = await handleFetch(`${apiURL}search/movie${apiKey}&query=${query}&page=${page}}`);
 
     return basicStructure(data.results);
 }

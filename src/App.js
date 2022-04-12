@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Sigh up component for routes
 import SignUp from 'pages/signUp';
@@ -31,11 +31,12 @@ const App = () => {
 
                 <Route element={<ProtectedRoutes />}>
                     <Route path="/" element={<Main />}>
-                        <Route path="home" element={<Home />} />
+                        <Route path="" element={<Home />} />
                         <Route path="movies" element={<Movies />} />
                         <Route path="series" element={<Series />} />
                         <Route path="people" element={<People />} />
-                        <Route path="/*" element={<Navigate to="home" />} />
+                        <Route path="/*" element={<Navigate to="/" />} />
+                        
                     </Route>
                 </Route>
         </Routes>
