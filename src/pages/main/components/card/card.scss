@@ -53,6 +53,10 @@
         .card {
             width: 12rem;
             margin: .2rem;
+
+            .img-container {
+                min-height: 18rem;
+            }
         }
     }
 }

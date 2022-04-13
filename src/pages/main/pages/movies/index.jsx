@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { InView } from 'react-intersection-observer';
 
-import { getPopular, searchMovie } from 'services/api/movies'
+import { getTrending, searchMovie } from 'services/api/movies'
 import SearchBar from 'pages/main/components/searchbar';
 import List from 'pages/main/components/list';
+
+import './assets/scss/movies.scss';
 
 const Movies = () => {
     const [movieList, setMovieList] = useState([]);
@@ -12,7 +14,7 @@ const Movies = () => {
 
     useEffect(() => {
         const getNewMovies = async () => {
-            const newMovies = await getPopular(page);
+            const newMovies = await getTrending(page);
             setMovieList(prevMovies => ([...prevMovies, ...newMovies]))
         }
 
@@ -34,7 +36,7 @@ const Movies = () => {
             
             <section className="movies-section">
                 <List
-                 listName="Popular Movies" 
+                 listName="Trending Movies"
                  items={movieList}
                 />
             </section>
@@ -44,7 +46,7 @@ const Movies = () => {
                  as="div"
                  onChange={updatePage}
                 >
-                    <h1>HELLO</h1>
+                    <h4>Loading...</h4>
                 </InView>
             }
         </main>
