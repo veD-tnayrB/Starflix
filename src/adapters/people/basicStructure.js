@@ -1,4 +1,4 @@
-export const basicStructure = (peopleList) => {
+const basicStructure = (peopleList) => {
     const adaptedPeopleList = peopleList.map(person => (
         {
             id: person.id,
@@ -11,3 +11,5 @@ export const basicStructure = (peopleList) => {
 
     return adaptedPeopleList;
 }
+
+export default basicStructure;

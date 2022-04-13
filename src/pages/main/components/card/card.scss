@@ -13,7 +13,13 @@
         transition: transform .1s linear;
 
         .img-container {
-            min-height: 19.5rem;
+            background: variables.$Gray;
+            color: variables.$White;
+
+            min-height: 21rem;
+
+            display: flex;
+            align-items: center;
 
             img {
                 width: 100%;

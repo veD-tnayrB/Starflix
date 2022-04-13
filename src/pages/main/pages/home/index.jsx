@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
 import Hero from 'pages/main/components/hero';
-import Card from 'pages/main/components/card';
+import List from 'pages/main/components/list';
 
 import { getTrending as getTrendingMovies, getUpcoming as getUpcomingMovies } from 'services/api/movies';
-import { getTrending as getTrendingSeries, getTopRated as getTopRatedSeries } from 'services/api/series';
+import { getTrending as getTrendingSeries } from 'services/api/series';
+import { getPopular as getPopularPeople } from 'services/api/people';
 
 import './assets/scss/home.scss';
 
 const Home = () => {
     const [mainMovie, setMainMovie] = useState({});
     const [trendingMovies, setTrendingMovies] = useState([]);
-    const [upcomingMovies, setUpcomingMovies] = useState([]);
     const [trendingSeries, setTrendingSeries] = useState([]);
-    const [topRatedSeries, setTopRatedSeries] = useState([]);
+    const [popularPeople, setPopularPeople] = useState([]);
     
     useEffect(() => {
         const getData = async () => {
@@ -21,69 +21,37 @@ const Home = () => {
             const upcomingMovies = await getUpcomingMovies();
 
             setMainMovie(upcomingMovies[0]);
-            setUpcomingMovies(upcomingMovies);
             setTrendingMovies(await getTrendingMovies());
 
             // Series
             setTrendingSeries(await getTrendingSeries());
-            setTopRatedSeries(await getTopRatedSeries());
+
+            // People
+            setPopularPeople(await getPopularPeople());
         }
 
         getData();
     }, []);
-
-    const trendingMoviesList = trendingMovies.map(trendingMovie => (
-        <Card 
-         key={trendingMovie.id}
-         item={trendingMovie} 
-        />
-    ))
-
-    const trendingSeriesList = trendingSeries.map(trendingSerie => (
-        <Card 
-         key={trendingSerie.id}
-         item={trendingSerie} 
-        />
-    ))
-
-    const upcomingMoviesList = upcomingMovies.map(upcomingMovie => (
-        <Card
-         key={upcomingMovie.id}
-         item={upcomingMovie}
-        />
-    ))
-
-    const topRatedSeriesList = topRatedSeries.map(ratedSerie => (
-        <Card
-         key={ratedSerie.id}
-         item={ratedSerie}
-        />
-    ))
 
     return (
         <main className="home-page">
             <Hero item={mainMovie} />
 
             <section>
-                <h3 className="section-title">Trending Movies</h3>
-                <ol>
-                    {trendingMoviesList}
-                </ol>
+                <List
+                 listName="Trending Movies" 
+                 items={trendingMovies}
+                />
 
-                <h3 className="section-title">Trending Series</h3>
-                <ol>
-                    {trendingSeriesList}
-                </ol>
+                <List
+                 listName="Trending Series" 
+                 items={trendingSeries}
+                />
 
-                <h3 className="section-title">Upcoming Movies</h3>
-                <ol>
-                    {upcomingMoviesList}
-                </ol>
-
-                <h3 className="section-title">Top Rated Series</h3>
-                <ol>
-                    {topRatedSeriesList}
-                </ol>
+                <List
+                 listName="Popular People"
+                 items={popularPeople}
+                />
             </section>
         </main>
     )

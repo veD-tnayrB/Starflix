@@ -1,1 +1,1 @@
-export { getPopular } from '.getPopular';
+export { getPopular } from './getPopular';

@@ -1,8 +1,8 @@
-import { handleFetch, apiURL, apiKey } from './index';
+import { handleFetch, apiURL, apiKey } from '../index';
 import basicStructure from 'adapters/people/basicStructure';
 
-export const getUpcoming = async () => {
+export const getPopular = async () => {
     const data = await handleFetch(`${apiURL}person/popular${apiKey}`);
 
-    return getBasicMedia(data.results);
+    return basicStructure(data.results);
 }
