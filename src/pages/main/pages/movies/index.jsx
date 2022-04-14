@@ -5,10 +5,10 @@ import { getTrending, searchMovie } from 'services/api/movies'
 import SearchBar from 'pages/main/components/searchbar';
 import List from 'pages/main/components/list';
 
-import './assets/scss/movies.scss';
 
 const Movies = () => {
     const [movieList, setMovieList] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
     const lastPageToLoad = 10;
 
@@ -26,28 +26,40 @@ const Movies = () => {
     }
 
     return (
-        <main className="movies-page">
+        <main className="category-page">
             <h2>Search Movie</h2>
             <SearchBar 
              type="Movies"
              makeFetchTo={searchMovie}
-             results={setMovieList}
+             results={setSearchResults}
             />
             
-            <section className="movies-section">
-                <List
-                 listName="Trending Movies"
-                 items={movieList}
-                />
-            </section>
             {
-                page < lastPageToLoad &&
-                <InView 
-                 as="div"
-                 onChange={updatePage}
-                >
-                    <h4>Loading...</h4>
-                </InView>
+                searchResults.length > 0 ?
+                <section className="list-section">
+                    <List
+                     listName="Results"
+                     items={searchResults}
+                    />
+                </section>
+                :
+                <>
+                    <section className="list-section">
+                        <List
+                         listName="Trending Movies"
+                         items={movieList}
+                        />
+                    </section>
+                        {
+                            page < lastPageToLoad &&
+                            <InView
+                                as="div"
+                                onChange={updatePage}
+                            >
+                                <h4>Loading...</h4>
+                            </InView>
+                        }
+                </>
             }
         </main>
     )
