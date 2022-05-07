@@ -1,8 +1,11 @@
 import { handleFetch, apiURL, apiKey } from '../index';
 import basicStructure from 'adapters/movies/basicStructure';
 
-export const searchMovie = async (query, page = 1) => {
-    const data = await handleFetch(`${apiURL}search/movie${apiKey}&query=${query}&page=${page}}`);
+export const searchMovie = (signal, query, page = 1) => {
 
-    return basicStructure(data.results);
+    return handleFetch(`${apiURL}search/movie${apiKey}&query=${query}&page=${page}}`, signal)
+    .then(data => {
+        return basicStructure(data.results);
+    });
+
 }

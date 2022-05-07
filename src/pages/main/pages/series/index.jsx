@@ -3,7 +3,7 @@ import { InView } from 'react-intersection-observer';
 
 import { getTrending, searchSerie } from 'services/api/series'
 import SearchBar from 'pages/main/components/searchbar';
-import List from 'pages/main/components/list';
+import SerieCard from 'pages/main/components/card/serieCard';
 
 
 const Series = () => {
@@ -12,17 +12,29 @@ const Series = () => {
     const lastPageToLoad = 10;
 
     useEffect(() => {
-        const getNewSeries = async () => {
-            const newSeries = await getTrending(page);
-            setSeriesList(prevSeries => ([...prevSeries, ...newSeries]))
-        }
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-        getNewSeries();
+        getTrending(signal, page)
+        .then(newSeries => {
+            setSeriesList(prevSeries => ([...prevSeries, ...newSeries]))
+        })
+        
+        return () => {
+            controller.abort()
+        }
     }, [page])
 
     const updatePage = () => {
         setPage(prevPage => prevPage + 1);
     }
+
+    const seriesElements = seriesList.map(serie => (
+        <SerieCard 
+         key={serie.id}
+         serie={serie}
+        />
+    ))
 
     return (
         <main className="category-page">
@@ -34,16 +46,15 @@ const Series = () => {
             />
 
             <section className="list-section">
-                <List
-                    listName="Trending Series"
-                    items={seriesList}
-                />
+                <ol>
+                    {seriesElements}
+                </ol>
             </section>
             {
                 page < lastPageToLoad &&
                 <InView
-                    as="div"
-                    onChange={updatePage}
+                 as="div"
+                 onChange={updatePage}
                 >
                     <h4>Loading...</h4>
                 </InView>

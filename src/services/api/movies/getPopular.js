@@ -1,8 +1,11 @@
 import { handleFetch, apiURL, apiKey } from '../index';
 import basicStructure from 'adapters/movies/basicStructure';
 
-export const getPopular = async () => {
-    const data = await handleFetch(`${apiURL}movie/popular${apiKey}`);
+export const getPopular = (signal) => {
+    
+    handleFetch(`${apiURL}movie/popular${apiKey}`, signal)
+    .then(data => {
+        return basicStructure(data.results);
+    })
 
-    return basicStructure(data.results);
 }

@@ -1,0 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+import { apiImageURL } from 'services/api';
+
+import '../card.scss';
+
+const SerieCard = ({ className = 'card', serie }) => {
+    const navigateTo = useNavigate();
+
+    return (
+        <li className="item-card">
+            <button
+             className={className}
+             onClick={() => navigateTo(`/details/${serie.id}`)}
+            >
+                <div className="img-container">
+                    <img
+                     src={`${apiImageURL}${serie.poster}`}
+                     alt={`${serie.name} poster`}
+                     title={serie.name}
+                    />
+                </div>
+                <span>{serie.name}</span>
+            </button>
+        </li>
+    )
+}
+
+export default SerieCard;

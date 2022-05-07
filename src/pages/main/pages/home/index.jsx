@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import Hero from 'pages/main/components/hero';
-import List from 'pages/main/components/list';
+import MovieCard from 'pages/main/components/card/movieCard';
+import SerieCard from 'pages/main/components/card/serieCard';
+import PersonCard from 'pages/main/components/card/personCard';
 
 import { getTrending as getTrendingMovies, getUpcoming as getUpcomingMovies } from 'services/api/movies';
 import { getTrending as getTrendingSeries } from 'services/api/series';
 import { getPopular as getPopularPeople } from 'services/api/people';
 
 import './assets/scss/home.scss';
+
 
 const Home = () => {
     const [mainMovie, setMainMovie] = useState({});
@@ -16,42 +19,80 @@ const Home = () => {
     const [popularPeople, setPopularPeople] = useState([]);
     
     useEffect(() => {
-        const getData = async () => {
-            // Movies
-            const upcomingMovies = await getUpcomingMovies();
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-            setMainMovie(upcomingMovies[0]);
-            setTrendingMovies(await getTrendingMovies());
+        // Movies
+        getUpcomingMovies(signal)
+        .then(upcomingMoviesList => {
+            setMainMovie(upcomingMoviesList[0])
+        })
 
-            // Series
-            setTrendingSeries(await getTrendingSeries());
+        getTrendingMovies(signal)
+        .then(trendingMovies => setTrendingMovies(trendingMovies));
 
-            // People
-            setPopularPeople(await getPopularPeople());
+        // Series
+        getTrendingSeries(signal)
+        .then(trendingSeries => setTrendingSeries(trendingSeries));
+
+        // People
+        getPopularPeople(signal)
+        .then(popularPeople => setPopularPeople(popularPeople));
+        
+        return () => {
+            controller.abort()
         }
-
-        getData();
     }, []);
+
+    const trendingMoviesElements = trendingMovies.map(movie => (
+        <MovieCard
+         key={movie.id}
+         movie={movie}
+        />
+    ))
+
+    const trendingSeriesElements = trendingSeries.map(serie => (
+        <SerieCard 
+         key={serie.id}
+         serie={serie}
+        />
+    ))
+
+    const popularPeopleElements = popularPeople.map(person => (
+        <PersonCard 
+         key={person.id}
+         person={person}
+        />
+    ))
+
 
     return (
         <main className="home-page">
             <Hero item={mainMovie} />
 
             <section>
-                <List
-                 listName="Trending Movies" 
-                 items={trendingMovies}
-                />
+                <ul>
+                    <li>
+                        <h3>Trending Movies</h3>
+                        <ol>
+                            {trendingMoviesElements}
+                        </ol>
+                    </li>
 
-                <List
-                 listName="Trending Series" 
-                 items={trendingSeries}
-                />
+                    <li>
+                        <h3>Trending Series</h3>
+                        <ol>
+                            {trendingSeriesElements}
+                        </ol>
+                    </li>
 
-                <List
-                 listName="Popular People"
-                 items={popularPeople}
-                />
+                    <li>
+                        <h3>Popular People</h3>
+                        <ol>
+                            {popularPeopleElements}
+                        </ol>
+                    </li>
+                </ul>
             </section>
         </main>
     )

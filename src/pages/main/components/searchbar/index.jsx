@@ -13,10 +13,11 @@ const SearchBar = ({ type, makeFetchTo, results }) => {
         setSearchValue(value);
     }
 
-    const search = async (event) => {
+    const search = (event) => {
         event.preventDefault();
-        const resultValue = await makeFetchTo(searchValue);
-        results(resultValue);
+
+        makeFetchTo(searchValue)
+        .then(data => results(data));
     }
 
     return (

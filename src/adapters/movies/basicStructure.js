@@ -1,16 +1,16 @@
-const basicStructure = (mediaList) => {
-    const adaptedMediaList = mediaList.map(media => (
+const basicStructure = (movieList) => {
+    const adaptedMoviesList = movieList.map(movie => (
         {
-            id: media.id,
-            title: media.original_title,
-            poster: media.poster_path,
-            backdrop: media.backdrop_path,
-            overview: media.overview,
-            adult: media.adult
+            id: movie.id,
+            title: movie.original_title,
+            poster: movie.poster_path,
+            backdrop: movie.backdrop_path,
+            overview: movie.overview,
+            adult: movie.adult
         }
     ))
 
-    return adaptedMediaList;
+    return adaptedMoviesList;
 }
 
 export default basicStructure;

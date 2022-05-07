@@ -3,7 +3,7 @@ import { InView } from 'react-intersection-observer';
 
 import { getTrending, searchMovie } from 'services/api/movies'
 import SearchBar from 'pages/main/components/searchbar';
-import List from 'pages/main/components/list';
+import MovieCard from 'pages/main/components/card/movieCard';
 
 
 const Movies = () => {
@@ -13,17 +13,37 @@ const Movies = () => {
     const lastPageToLoad = 10;
 
     useEffect(() => {
-        const getNewMovies = async () => {
-            const newMovies = await getTrending(page);
-            setMovieList(prevMovies => ([...prevMovies, ...newMovies]))
-        }
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-        getNewMovies();
+        getTrending(signal, page)
+        .then(newMovies => {
+            setMovieList(prevMovies => ([...prevMovies, ...newMovies]));
+            
+        })
+
+        return () => {
+            controller.abort()
+        }
     }, [page])
 
     const updatePage = () => {
         setPage(prevPage => prevPage + 1);
     }
+
+    const moviesElements = movieList.map(movie => (
+        <MovieCard 
+         key={movie.id}
+         movie={movie}
+        />
+    ))
+
+    const resultsElements = searchResults.map(result => (
+        <MovieCard
+         key={result.id}
+         movie={result}
+        />
+    ))
 
     return (
         <main className="category-page">
@@ -37,24 +57,22 @@ const Movies = () => {
             {
                 searchResults.length > 0 ?
                 <section className="list-section">
-                    <List
-                     listName="Results"
-                     items={searchResults}
-                    />
+                    <ol>
+                        {resultsElements}
+                    </ol>
                 </section>
                 :
                 <>
                     <section className="list-section">
-                        <List
-                         listName="Trending Movies"
-                         items={movieList}
-                        />
+                        <ol>
+                            {moviesElements}
+                        </ol>
                     </section>
                         {
                             page < lastPageToLoad &&
                             <InView
-                                as="div"
-                                onChange={updatePage}
+                             as="div"
+                             onChange={updatePage}
                             >
                                 <h4>Loading...</h4>
                             </InView>
