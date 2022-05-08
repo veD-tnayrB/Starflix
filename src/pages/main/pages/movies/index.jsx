@@ -23,7 +23,6 @@ const Movies = () => {
         getTrending(signal, page)
         .then(newMovies => {
             setMovieList(prevMovies => ([...prevMovies, ...newMovies]));
-
         })
 
         return () => {

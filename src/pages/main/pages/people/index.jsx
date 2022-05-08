@@ -20,7 +20,7 @@ const People = () => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        getPopular(signal)
+        getPopular(signal, page)
         .then(newPeople => {
             setPeopleList(prevPeople => ([...prevPeople, ...newPeople]));
         })
@@ -89,11 +89,13 @@ const People = () => {
                     </ol>
                 </section>
                 :
-                <section className="list-section">
-                    <h3>Popular People</h3>
-                    <ol>
-                        {peopleElements}
-                    </ol>
+                <>
+                    <section className="list-section">
+                        <h3>Popular People</h3>
+                        <ol>
+                            {peopleElements}
+                        </ol>
+                  </section>
                     {
                         page < lastPageToLoad &&
                         <InView
@@ -103,7 +105,7 @@ const People = () => {
                             <h4>Loading...</h4>
                         </InView>
                     }
-                </section>
+                </>
             }
         </main>
     )

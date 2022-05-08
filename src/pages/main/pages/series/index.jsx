@@ -38,6 +38,7 @@ const Series = () => {
     }
 
     const search = (searchValue) => {
+        // In case of searchValue === '' will be showed trending movies else the results will be showed
         if (searchValue === '') {
             setSearchResults([]);
             return;
@@ -59,7 +60,7 @@ const Series = () => {
         />
     ))
 
-    const searchResultsElements = searchResults.map(result => (
+    const resultsElements = searchResults.map(result => (
         <SerieCard 
          key={result.id}
          serie={result}
@@ -84,16 +85,17 @@ const Series = () => {
                 <section className="list-section">
                     <h3>Results</h3>
                     <ol>
-                        {searchResultsElements}
+                        {resultsElements}
                     </ol>
                 </section>
                 :
-                <section className="list-section">
-                    <h3>Trending Series</h3>
-                    <ol>
-                        {seriesElements}
-                    </ol>
-
+                <>
+                    <section className="list-section">
+                        <h3>Trending Series</h3>
+                        <ol>
+                            {seriesElements}
+                        </ol>
+                    </section>
                     {
                         page < lastPageToLoad &&
                         <InView
@@ -103,7 +105,7 @@ const Series = () => {
                             <h4>Loading...</h4>
                         </InView>
                     }
-                </section>
+                </>
             }
             
         </main>
