@@ -14,7 +14,7 @@ const SerieCard = ({ className = 'card', serie }) => {
             >
                 <div className="img-container">
                     <img
-                     src={`${apiImageURL}${serie.poster}`}
+                     src={serie.poster ? `${apiImageURL}${serie.poster}` : ""}
                      alt={`${serie.name} poster`}
                      title={serie.name}
                     />

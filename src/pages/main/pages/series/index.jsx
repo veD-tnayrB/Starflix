@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { InView } from 'react-intersection-observer';
 
-import { getTrending, searchSerie } from 'services/api/series'
 import SearchBar from 'pages/main/components/searchbar';
 import SerieCard from 'pages/main/components/card/serieCard';
+import Loading from 'pages/main/pages/loading';
+
+import { getTrending, searchSerie } from 'services/api/series'
 
 
 const Series = () => {
     const [seriesList, setSeriesList] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(1);
     const lastPageToLoad = 10;
 
@@ -17,7 +21,7 @@ const Series = () => {
 
         getTrending(signal, page)
         .then(newSeries => {
-            setSeriesList(prevSeries => ([...prevSeries, ...newSeries]))
+            setSeriesList(prevSeries => ([...prevSeries, ...newSeries]));
         })
         
         return () => {
@@ -25,8 +29,27 @@ const Series = () => {
         }
     }, [page])
 
-    const updatePage = () => {
-        setPage(prevPage => prevPage + 1);
+
+    const updatePage = (inView) => {
+        if (inView) {
+            setPage(prevPage => prevPage + 1);
+        }
+
+    }
+
+    const search = (searchValue) => {
+        if (searchValue === '') {
+            setSearchResults([]);
+            return;
+        }
+
+        setIsLoading(true);
+
+        searchSerie(searchValue)
+        .then(results => {
+            setSearchResults(results);
+            setIsLoading(false);
+        })
     }
 
     const seriesElements = seriesList.map(serie => (
@@ -36,29 +59,53 @@ const Series = () => {
         />
     ))
 
+    const searchResultsElements = searchResults.map(result => (
+        <SerieCard 
+         key={result.id}
+         serie={result}
+        />
+    ))
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
-        <main className="category-page">
+        <main>
             <h2>Search Serie</h2>
             <SearchBar
              type="Series"
-             makeFetchTo={searchSerie}
-             results={setSeriesList}
+             onSubmit={search}
             />
 
-            <section className="list-section">
-                <ol>
-                    {seriesElements}
-                </ol>
-            </section>
             {
-                page < lastPageToLoad &&
-                <InView
-                 as="div"
-                 onChange={updatePage}
-                >
-                    <h4>Loading...</h4>
-                </InView>
+                searchResults.length > 0
+                ?
+                <section className="list-section">
+                    <h3>Results</h3>
+                    <ol>
+                        {searchResultsElements}
+                    </ol>
+                </section>
+                :
+                <section className="list-section">
+                    <h3>Trending Series</h3>
+                    <ol>
+                        {seriesElements}
+                    </ol>
+
+                    {
+                        page < lastPageToLoad &&
+                        <InView
+                         as="div"
+                         onChange={updatePage}
+                        >
+                            <h4>Loading...</h4>
+                        </InView>
+                    }
+                </section>
             }
+            
         </main>
     )
 }

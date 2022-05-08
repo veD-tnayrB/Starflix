@@ -5,8 +5,9 @@ import Input from 'components/input';
 
 import './searchbar.scss';
 
-const SearchBar = ({ type, makeFetchTo, results }) => {
+const SearchBar = ({ type, onSubmit }) => {
     const [searchValue, setSearchValue] = useState('');
+
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -16,8 +17,7 @@ const SearchBar = ({ type, makeFetchTo, results }) => {
     const search = (event) => {
         event.preventDefault();
 
-        makeFetchTo(searchValue)
-        .then(data => results(data));
+        onSubmit(searchValue);
     }
 
     return (
@@ -27,7 +27,7 @@ const SearchBar = ({ type, makeFetchTo, results }) => {
                  value={searchValue}
                  onChange={handleChange}
                  isCorrect={searchValue.length >= 1}
-                 errorMessage="The search couldnt be empty" // placeholder
+                 errorMessage="The search couldnt be empty"
                  input={{
                      name: 'search',
                      placeholder: `Search ${type}`

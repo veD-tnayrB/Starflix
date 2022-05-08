@@ -4,14 +4,26 @@
     background: variables.$Dark-Gray;
     min-height: 100vh;
 
-    .category-page {
+    main {
         h2 {
             font-size: 1.5rem;
             margin: 0 1rem;
         }
 
+        h3 {
+            font-size: 2rem;
+            margin: .5rem 1rem;
+        }
+
         .list-section {
             min-height: 100vh;
+
+            ol {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+            }
         }
 
         h4 {

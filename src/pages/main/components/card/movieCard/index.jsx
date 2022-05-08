@@ -5,7 +5,7 @@ import '../card.scss';
 
 const MovieCard = ({ className = 'card', movie }) => {
     const navigateTo = useNavigate();
-    console.log(movie.poster)
+    
 
     return (
         <li className="item-card">
@@ -15,7 +15,7 @@ const MovieCard = ({ className = 'card', movie }) => {
             >
                 <div className="img-container">
                     <img
-                     src={`${apiImageURL}${movie.poster}`}
+                     src={movie.poster ? `${apiImageURL}${movie.poster}` : ""}
                      alt={`${movie.title} poster`}
                      title={movie.title}
                     />

@@ -14,7 +14,7 @@ const PersonCard = ({ className = 'card', person }) => {
             >
                 <div className="img-container">
                     <img
-                     src={`${apiImageURL}${person.profile}`}
+                     src={person.profile ? `${apiImageURL}${person.profile}` : ""}
                      alt={person.name}
                      title={person.name}
                     />

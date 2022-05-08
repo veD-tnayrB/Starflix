@@ -1,11 +1,13 @@
-import { handleFetch, apiURL, apiKey } from '../index';
+import { apiURL, apiKey } from '../index';
 import basicStructure from 'adapters/people/basicStructure';
 
-export const searchPeople = async (query, page = 1, signal) => {
+export const searchPeople = (query, page = 1) => {
     
-    return handleFetch(`${apiURL}search/person${apiKey}&query=${query}&page=${page}}`, signal)
+    return fetch(`${apiURL}search/person${apiKey}&query=${query}&page=${page}}`)
+    .then(response => response.json())
     .then(data => {
-        return basicStructure(data.results)
-    });
+        return basicStructure(data.results);
+    })
+    .catch(err => err)
 
 }

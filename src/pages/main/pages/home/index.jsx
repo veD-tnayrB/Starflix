@@ -4,6 +4,7 @@ import Hero from 'pages/main/components/hero';
 import MovieCard from 'pages/main/components/card/movieCard';
 import SerieCard from 'pages/main/components/card/serieCard';
 import PersonCard from 'pages/main/components/card/personCard';
+import Loading from 'pages/main/pages/loading';
 
 import { getTrending as getTrendingMovies, getUpcoming as getUpcomingMovies } from 'services/api/movies';
 import { getTrending as getTrendingSeries } from 'services/api/series';
@@ -17,32 +18,31 @@ const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [trendingSeries, setTrendingSeries] = useState([]);
     const [popularPeople, setPopularPeople] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        // Movies
-        getUpcomingMovies(signal)
-        .then(upcomingMoviesList => {
-            setMainMovie(upcomingMoviesList[0])
+        setIsLoading(true);
+
+        Promise.all([getUpcomingMovies(signal), getTrendingMovies(signal), getTrendingSeries(signal), getPopularPeople(signal)])
+        .then(results => {
+            const [upcomingMoviesList, trendingMoviesList, trendingSeriesList, popularPeopleList] = results;
+
+            setMainMovie(upcomingMoviesList[0]);
+            setTrendingMovies(trendingMoviesList);
+            setTrendingSeries(trendingSeriesList);
+            setPopularPeople(popularPeopleList);
+
+            setIsLoading(false);
         })
 
-        getTrendingMovies(signal)
-        .then(trendingMovies => setTrendingMovies(trendingMovies));
-
-        // Series
-        getTrendingSeries(signal)
-        .then(trendingSeries => setTrendingSeries(trendingSeries));
-
-        // People
-        getPopularPeople(signal)
-        .then(popularPeople => setPopularPeople(popularPeople));
-        
         return () => {
             controller.abort()
         }
     }, []);
+
 
     const trendingMoviesElements = trendingMovies.map(movie => (
         <MovieCard
@@ -65,12 +65,16 @@ const Home = () => {
         />
     ))
 
+    if (isLoading) {
+        return <Loading />;
+    }
+
 
     return (
         <main className="home-page">
             <Hero item={mainMovie} />
 
-            <section>
+            <section className="list-section">
                 <ul>
                     <li>
                         <h3>Trending Movies</h3>

@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { InView } from 'react-intersection-observer';
 
-import { getTrending, searchMovie } from 'services/api/movies'
 import SearchBar from 'pages/main/components/searchbar';
 import MovieCard from 'pages/main/components/card/movieCard';
+import Loading from 'pages/main/pages/loading';
+
+import { getTrending, searchMovie } from 'services/api/movies'
 
 
 const Movies = () => {
     const [movieList, setMovieList] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const lastPageToLoad = 10;
+
 
     useEffect(() => {
         const controller = new AbortController();
@@ -19,7 +23,7 @@ const Movies = () => {
         getTrending(signal, page)
         .then(newMovies => {
             setMovieList(prevMovies => ([...prevMovies, ...newMovies]));
-            
+
         })
 
         return () => {
@@ -27,8 +31,27 @@ const Movies = () => {
         }
     }, [page])
 
-    const updatePage = () => {
-        setPage(prevPage => prevPage + 1);
+
+    const updatePage = (inView) => {
+        if (inView) {
+            setPage(prevPage => prevPage + 1);
+        }
+    }
+
+    const search = (searchValue) => {
+        // In case of searchValue === '' will be showed trending movies else the results will be showed
+        if (searchValue === '') {
+            setSearchResults([]); 
+            return;
+        }
+
+        setIsLoading(true);
+
+        searchMovie(searchValue)
+        .then(results => {
+            setSearchResults(results);
+            setIsLoading(false);
+        })
     }
 
     const moviesElements = movieList.map(movie => (
@@ -44,19 +67,25 @@ const Movies = () => {
          movie={result}
         />
     ))
+    
+    if (isLoading) {
+        return <Loading />;
+    }
+
 
     return (
-        <main className="category-page">
+        <main>
             <h2>Search Movie</h2>
             <SearchBar 
              type="Movies"
-             makeFetchTo={searchMovie}
-             results={setSearchResults}
+             onSubmit={search}
             />
             
             {
-                searchResults.length > 0 ?
+                searchResults.length > 0 
+                ?
                 <section className="list-section">
+                    <h3>Results</h3>
                     <ol>
                         {resultsElements}
                     </ol>
@@ -64,19 +93,20 @@ const Movies = () => {
                 :
                 <>
                     <section className="list-section">
+                        <h3>Trending Movies</h3>
                         <ol>
                             {moviesElements}
                         </ol>
                     </section>
-                        {
-                            page < lastPageToLoad &&
-                            <InView
-                             as="div"
-                             onChange={updatePage}
-                            >
-                                <h4>Loading...</h4>
-                            </InView>
-                        }
+                    {
+                        page < lastPageToLoad &&
+                        <InView
+                         as="div"
+                         onChange={updatePage}
+                        >
+                            <h4>Loading...</h4>
+                        </InView>
+                    }
                 </>
             }
         </main>
