@@ -18,7 +18,7 @@ const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [trendingSeries, setTrendingSeries] = useState([]);
     const [popularPeople, setPopularPeople] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
         const controller = new AbortController();

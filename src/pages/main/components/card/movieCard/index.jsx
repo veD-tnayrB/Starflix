@@ -6,12 +6,11 @@ import '../card.scss';
 const MovieCard = ({ className = 'card', movie }) => {
     const navigateTo = useNavigate();
     
-
     return (
         <li className="item-card">
             <button
              className={className}
-             onClick={() => navigateTo(`/details/${movie.id}`)}
+             onClick={() => navigateTo(`/movies/movie/${movie.id}`)}
             >
                 <div className="img-container">
                     <img

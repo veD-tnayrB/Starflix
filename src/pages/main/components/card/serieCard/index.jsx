@@ -10,7 +10,7 @@ const SerieCard = ({ className = 'card', serie }) => {
         <li className="item-card">
             <button
              className={className}
-             onClick={() => navigateTo(`/details/${serie.id}`)}
+             onClick={() => navigateTo(`/series/serie/${serie.id}`)}
             >
                 <div className="img-container">
                     <img

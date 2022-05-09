@@ -95,7 +95,7 @@ const People = () => {
                         <ol>
                             {peopleElements}
                         </ol>
-                  </section>
+                    </section>
                     {
                         page < lastPageToLoad &&
                         <InView
