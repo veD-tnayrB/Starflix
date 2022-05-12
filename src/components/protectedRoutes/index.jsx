@@ -1,14 +1,14 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import useAuth from 'hooks/useAuth';
+import useLoggedUser from 'contexts/loggedUser/useLoggedUser';
 
 const ProtectedRoutes = () => {
-    const isUserLogged = useAuth();
+    const { loggedUser } = useLoggedUser();
 
     return (
         <>
             {
-                isUserLogged ? <Outlet /> : <Navigate to="/signup" />
+                loggedUser.isLogged ? <Outlet /> : <Navigate to="/signup" />
             }
         </>
     )

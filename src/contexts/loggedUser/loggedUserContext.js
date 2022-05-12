@@ -18,6 +18,7 @@ const LoggedUserProvider = ({ children }) => {
     const [loggedUser, setLoggedUser] = useState(userInitialValue);
 
     useMemo(() => {
+        console.log(users);
         const user = users.filter(user => user.isLogged === true)[0];
         setLoggedUser(user || userInitialValue);
     }, [users])

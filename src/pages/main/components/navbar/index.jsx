@@ -12,7 +12,7 @@ import './navbar.scss';
 
 
 const Navbar = () => {
-    const [loggedUser] = useLoggedUser();
+    const { loggedUser } = useLoggedUser();
     const { logoutUser } = useUsers();
     const [isUserOptionsOpen, setIsUserOptionsOpen] = useState(false);
     const navigateTo = useNavigate();

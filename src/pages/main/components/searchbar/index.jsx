@@ -13,7 +13,7 @@ const SearchBar = ({ type, onSubmit }) => {
     const search = (event) => {
         event.preventDefault();
 
-        onSubmit(searchValue);
+        onSubmit(form.info.search);
     }
 
 

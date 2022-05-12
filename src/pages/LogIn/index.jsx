@@ -7,7 +7,7 @@ import './assets/scss/login.scss';
 
 
 const LogIn = () => {
-    const [users] = useUsers();
+    const { users } = useUsers();
     const navigateTo = useNavigate();
 
 

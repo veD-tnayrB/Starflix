@@ -17,7 +17,7 @@ const usersReducer = (state, action) => {
                     {
                         ...action.payload.newUser,
                         isLogged: true,
-                        id: uniqid
+                        id: uniqid()
                     }
                 ]
             )

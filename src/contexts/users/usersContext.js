@@ -5,7 +5,7 @@ const UsersContext = createContext();
 
 
 const UsersProvider = ({ children }) => {
-    const [users, dispatch] = useReducer(usersReducer, localStorage.getItem('users') || []);
+    const [users, dispatch] = useReducer(usersReducer, JSON.parse(localStorage.getItem('users')) || []);
 
     // Save every change to LocalStorage
     useEffect(() => {
