@@ -17,7 +17,7 @@ const Input = ({ label, input, value, onChange, isCorrect, errorMessage }) => {
              }}
             >
                 <input
-                 type="text"
+                 type={input.type}
                  id={input.name}
                  name={input.name}
                  placeholder={input.placeholder}

@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
-import { UserContext } from 'contexts/userContext';
+import useLoggedUser from 'contexts/loggedUser/useLoggedUser';
 
 const useAuth = () => {
-    const {currentUser} = useContext(UserContext);
-    const isUserLogged = Object.keys(currentUser).every(prop => currentUser[prop] !== '');
-
-    return isUserLogged;
+    const { loggedUser } = useLoggedUser();
+    return loggedUser.isLogged;
 }
 
 export default useAuth;

@@ -1,21 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
-import { UserContext } from 'contexts/userContext';
+import useLoggedUser from 'contexts/loggedUser/useLoggedUser';
+import useUsers from 'contexts/users/useUsers';
 
 import './navbar.scss';
 
+
 const Navbar = () => {
-    const { currentUser, logout } = useContext(UserContext);
+    const [loggedUser] = useLoggedUser();
+    const { logoutUser } = useUsers();
     const [isUserOptionsOpen, setIsUserOptionsOpen] = useState(false);
     const navigateTo = useNavigate();
 
     const handleLogout = () => {
-        logout();
+        logoutUser();
         navigateTo('/signup')
     }
 
@@ -66,7 +69,7 @@ const Navbar = () => {
                                     >
                                         <img
                                          className="user-img"
-                                         src={currentUser.img}
+                                         src={loggedUser?.img}
                                          alt="user"
                                         />
                                     </button>
@@ -74,7 +77,7 @@ const Navbar = () => {
                                     {
                                         isUserOptionsOpen && 
                                         <div className="user-options">
-                                            <h2>{currentUser.userName}</h2>
+                                            <h2>{loggedUser.userName}</h2>
                                             <button>
                                                 <SettingsIcon className="icon" />
                                                 Settings

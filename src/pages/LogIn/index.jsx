@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
 import UserCard from './components/userCard';
+import useUsers from 'contexts/users/useUsers';
 
-import { getAllUsers } from 'services/users';
 import './assets/scss/login.scss';
 
+
 const LogIn = () => {
-    const [loggedUsersList, setLoggedUsersList] = useState([]);
+    const [users] = useUsers();
     const navigateTo = useNavigate();
 
-    useEffect(() => {
-        const userInfo = getAllUsers();
 
-        userInfo.length > 0 ? 
-        setLoggedUsersList(userInfo) : 
-        navigateTo('users-not-found');
-    }, [])
-
-    const usersElements = loggedUsersList.map(user => (
+    const usersElements = users.map(user => (
         <UserCard 
          key={user.id}
          userData={user}
         />
     ))
+
 
     return (  
         <main className="log-in-page">
@@ -33,8 +27,8 @@ const LogIn = () => {
                 </ol>
 
                 <button
-                    className="secondary-button"
-                    onClick={() => navigateTo("/signup")}
+                 className="secondary-button"
+                 onClick={() => navigateTo("/signup")}
                 >
                     Sign Up
                 </button>

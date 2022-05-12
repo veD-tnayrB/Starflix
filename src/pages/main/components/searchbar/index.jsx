@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
-
 import SearchIcon from '@mui/icons-material/Search';
 import Input from 'components/input';
 
+import useForm from 'hooks/useForm';
+
 import './searchbar.scss';
 
+
 const SearchBar = ({ type, onSubmit }) => {
-    const [searchValue, setSearchValue] = useState('');
+    const form = useForm({ search: '' });
 
-
-    const handleChange = (event) => {
-        const { value } = event.target;
-        setSearchValue(value);
-    }
 
     const search = (event) => {
         event.preventDefault();
@@ -20,16 +16,18 @@ const SearchBar = ({ type, onSubmit }) => {
         onSubmit(searchValue);
     }
 
+
     return (
         <section className="search-section">
             <form onSubmit={search}>
                 <Input 
-                 value={searchValue}
-                 onChange={handleChange}
-                 isCorrect={searchValue.length >= 1}
+                 value={form.info.search}
+                 onChange={form.handleChange}
+                 isCorrect={form.info.search.length >= 1}
                  errorMessage="The search couldnt be empty"
                  input={{
-                     name: 'search',
+                     type: "text",
+                     name: "search",
                      placeholder: `Search ${type}`
                  }}
                 />

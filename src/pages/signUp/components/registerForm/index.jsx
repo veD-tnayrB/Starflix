@@ -1,59 +1,43 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import uniqid from 'uniqid';
 
+import useForm from 'hooks/useForm';
 import Input from 'components/input';
-import { UserContext } from 'contexts/userContext';
-import { createLocalStorage, isExistingUser, saveUser, getAllUsers, getUserRandomImage } from 'services/users';
+
+import useUsers from 'contexts/users/useUsers';
 
 
 const RegisterForm = () => {
-    const [userData, setUserData] = useState({
+    const form = useForm({
         name: '',
         lastName: '',
         userName: '',
         password: '',
-        confirmPassword: '',
-        img: getUserRandomImage(),
-        id: uniqid() // This generate a uniq id for each user
+        confirmPassword: ''
     })
+    const {users, registerUser} = useUsers();
     const navigateTo = useNavigate();
-    const { setLoggedUser } = useContext(UserContext);
-    const thisUserAlreadyExist = useMemo(() => isExistingUser(userData), [userData.userName]);
 
-
-    // Create the local storage if it doesnt already exists
-    useEffect(() => {
-        createLocalStorage();
-    }, [])
-
-    // Handle the input changes
-    const updateData = (event) => {
-        const { name, value } = event.target;
-        setUserData(prevData => (
-            {
-                ...prevData,
-                [name]: value
-            }
-        ))
-    }
 
     // Save the user in localStorage and send it to /
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        saveUser(userData);
-        setLoggedUser(userData);
+        registerUser({ 
+            name: form.info.name, 
+            lastName: form.info.lastName, 
+            userName: form.info.userName, 
+            password: form.info.password 
+        });
         navigateTo('/');
-
     }
 
     // This are the rules for each input value
-    const isNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(userData.name);
-    const isLastNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(userData.lastName);
-    const isUserNameCorrect = /^[\w]{5}[\S]*$/.test(userData.userName);
-    const isPasswordCorrect = /^[\w]{8}[\S]*$/.test(userData.password);
-    const isPasswordEqual = userData.password === userData.confirmPassword;
+    const isNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(form.info.name);
+    const isLastNameCorrect = /^[A-Z]{1,1}[a-z]{2}[\S]*$/.test(form.info.lastName);
+    const isUserNameCorrect = /^[\w]{5}[\S]*$/.test(form.info.userName);
+    const userAlreadyExists = users.some(user => user.userName === form.info.userName);
+    const isPasswordCorrect = /^[\w]{8}[\S]*$/.test(form.info.password);
+    const isPasswordEqual = form.info.password === form.info.confirmPassword;
 
     // Disable the "sign up button" if some rule is false
     const isSomethingWrong = [isNameCorrect, isLastNameCorrect, isUserNameCorrect, isPasswordCorrect, isPasswordEqual].some(element => element === false);
@@ -73,10 +57,11 @@ const RegisterForm = () => {
                 <div className="basic-info">
                     <Input
                      label="Name"
-                     value={userData.name}
-                     onChange={updateData}
+                     value={form.info.name}
+                     onChange={form.handleChange}
                      isCorrect={isNameCorrect}
                      input={{
+                         type: "text",
                          name: "name",
                          placeholder: "John"
                      }}
@@ -84,10 +69,11 @@ const RegisterForm = () => {
 
                     <Input
                      label="Last Name"
-                     value={userData.lastName}
-                     onChange={updateData}
+                     value={form.info.lastName}
+                     onChange={form.handleChange}
                      isCorrect={isLastNameCorrect}
                      input={{
+                         type: "text",
                          name: "lastName",
                          placeholder: "Doe"
                      }}
@@ -96,11 +82,12 @@ const RegisterForm = () => {
 
                 <Input
                  label="User Name"
-                 value={userData.userName}
-                 onChange={updateData}
+                 value={form.info.userName}
+                 onChange={form.handleChange}
                  isCorrect={isUserNameCorrect}
                  errorMessage="User must have at least 5 letters/numbers"
                  input={{
+                     type: "text",
                      name: "userName",
                      placeholder: "JhonDoe_"
                     }}
@@ -108,11 +95,12 @@ const RegisterForm = () => {
 
                 <Input
                  label="Password"
-                 value={userData.password}
-                 onChange={updateData}
+                 value={form.info.password}
+                 onChange={form.handleChange}
                  isCorrect={isPasswordCorrect}
                  errorMessage="Password must be at least 8 letters/numbers"
                  input={{
+                     type: "password",
                      name: "password",
                      placeholder: "JhonDoe_123"
                     }}
@@ -120,18 +108,19 @@ const RegisterForm = () => {
 
                 <Input
                  label="Confirm Password"
-                 value={userData.confirmPassword}
-                 onChange={updateData}
+                 value={form.info.confirmPassword}
+                 onChange={form.handleChange}
                  isCorrect={isPasswordEqual}
                  errorMessage="Must be equal to password to confirm"
                  input={{
+                     type: "password",
                      name: "confirmPassword",
                      placeholder: "JhonDoe_123"
                     }}
                 />
 
                 {
-                    getAllUsers().length > 0 &&
+                    users.length > 0 &&
                     <span className="loggin">
                         Already logged in to this device?
                         <Link
@@ -144,7 +133,7 @@ const RegisterForm = () => {
                 }
 
                 {
-                    thisUserAlreadyExist &&
+                    userAlreadyExists &&
                     <span className="error-message">
                         Sorry but there is already a user with that username.
                     </span>
@@ -152,7 +141,7 @@ const RegisterForm = () => {
 
                 <button
                  className="main-button"
-                 disabled={thisUserAlreadyExist || isSomethingWrong}
+                    disabled={userAlreadyExists || isSomethingWrong}
                 >
                     <span>
                         Sign Up

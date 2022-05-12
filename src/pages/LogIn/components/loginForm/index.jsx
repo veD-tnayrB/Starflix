@@ -1,36 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import Input from 'components/input';
 import Modal from 'components/modal';
-import { UserContext } from 'contexts/userContext';
-import { getUser } from 'services/users/';
+
+import useUsers from 'contexts/users/useUsers';
+import useForm from 'hooks/useForm';
 
 import './loginform.scss';
 
 const LoginForm = () => {
-    const [userData, setUserData] = useState('');
-    const [password, setPassword] = useState('');
-    const isPasswordCorrect = password === userData.password;
-    const { setLoggedUser, currentUser } = useContext(UserContext);
+    const form = useForm({ password: '' });
+    const { users, logUser } = useUsers();
     const { userName } = useParams();
+    const selectedUser = useMemo(() => (
+        users.filter(user => user.userName === userName)[0]
+    ), [users]);
     const navigateTo = useNavigate();
 
 
-    useEffect(() => {
-        setUserData(getUser(userName))
-    }, [])
-    
-    const updateValue = (event) => {
-        const { value } = event.target;
-        setPassword(value)
-        
-    }
+    const handleLogin = (event) => {
+        event.preventDefault();
 
-    const handleLogin = () => {
-        setLoggedUser(userData);
+        logUser(selectedUser);
         navigateTo('/', { replace: true });
     }
+
+    // Validators
+    const isPasswordIncorrect = selectedUser.password !== form.info.password;
 
 
     return (
@@ -39,16 +36,22 @@ const LoginForm = () => {
                 <article className="login-card">
                     <form onSubmit={handleLogin}>
                         <div className="image-container">
-                            <img src={userData.img} className="user-img" />
+                            <img 
+                             src={selectedUser.img} 
+                             className="user-img"
+                             alt="user profile"
+                             title={selectedUser.userName}
+                            />
                         </div>
-                        <h1>{userData.userName}</h1>
+                        <h1>{selectedUser.userName}</h1>
                         <Input
                          label="Password"
-                         value={password}
-                         onChange={updateValue}
-                         isCorrect={isPasswordCorrect}
+                         value={form.info.password}
+                         onChange={form.handleChange}
+                         isCorrect={isPasswordIncorrect}
                          errorMessage="Password is incorrect."
                          input={{
+                             type: "password",
                              name: "password",
                              placeholder: "JhonDoe_123"
                          }}
@@ -56,7 +59,7 @@ const LoginForm = () => {
 
                         <button
                          className="main-button"
-                         disabled={!isPasswordCorrect}
+                         disabled={isPasswordIncorrect}
                         >
                             Log in
                         </button>
@@ -64,7 +67,7 @@ const LoginForm = () => {
                         <button
                          onClick={() => navigateTo(-1)}
                          className="secondary-button"
-                            type="button"
+                         type="reset"
                         >
                             Cancel
                         </button>
