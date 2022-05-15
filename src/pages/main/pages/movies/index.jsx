@@ -48,7 +48,6 @@ const Movies = () => {
 
         searchMovie(searchValue)
         .then(results => {
-            console.log(results)
             setSearchResults(results);
             setIsLoading(false);
         })

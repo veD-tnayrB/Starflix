@@ -28,7 +28,7 @@ const RegisterForm = () => {
             userName: form.info.userName, 
             password: form.info.password 
         });
-        navigateTo('/');
+        navigateTo('/', { replace: true });
     }
 
     // This are the rules for each input value
@@ -141,7 +141,7 @@ const RegisterForm = () => {
 
                 <button
                  className="main-button"
-                    disabled={userAlreadyExists || isSomethingWrong}
+                 disabled={userAlreadyExists || isSomethingWrong}
                 >
                     <span>
                         Sign Up

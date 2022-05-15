@@ -1,5 +1,6 @@
-import React, { useState, createContext, useMemo } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import useUsers from 'contexts/users/useUsers';
+
 const LoggedUserContext = createContext();
 
 const userInitialValue = {
@@ -17,9 +18,10 @@ const LoggedUserProvider = ({ children }) => {
     const { users } = useUsers();
     const [loggedUser, setLoggedUser] = useState(userInitialValue);
 
-    useMemo(() => {
-        console.log(users);
-        const user = users.filter(user => user.isLogged === true)[0];
+
+    useEffect(() => {
+        const user = users.find(user => user.isLogged === true);
+        console.log(user)
         setLoggedUser(user || userInitialValue);
     }, [users])
     

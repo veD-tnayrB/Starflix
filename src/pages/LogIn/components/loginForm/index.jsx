@@ -14,7 +14,7 @@ const LoginForm = () => {
     const { users, logUser } = useUsers();
     const { userName } = useParams();
     const selectedUser = useMemo(() => (
-        users.filter(user => user.userName === userName)[0]
+        users.find(user => user.userName === userName)
     ), [users]);
     const navigateTo = useNavigate();
 
@@ -48,7 +48,7 @@ const LoginForm = () => {
                          label="Password"
                          value={form.info.password}
                          onChange={form.handleChange}
-                         isCorrect={isPasswordIncorrect}
+                         isCorrect={!isPasswordIncorrect}
                          errorMessage="Password is incorrect."
                          input={{
                              type: "password",

@@ -12,6 +12,7 @@
     align-items: center;
 
     .action-container {
+        
         height: 50%;
         min-height: 16rem;
         max-height: 55rem;
@@ -69,6 +70,8 @@
 @media (max-width: 450px) {
     .log-in-page {
         .action-container {
+            max-height: unset;
+
             .user-list {
                 margin: 2rem 0;
                 flex-direction: column;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 // Sigh up component for routes
 import SignUp from 'pages/signUp';
@@ -27,19 +27,30 @@ import PersonDetails from 'pages/main/pages/details/pages/personDetails';
 
 // Utilities
 import ProtectedRoutes from 'components/protectedRoutes';
+import useAuth from 'hooks/useAuth';
 
 import './assets/scss/app.scss';
 
 
 const App = () => {
+    const navigateTo = useNavigate();
+    const isUserLogged = useAuth();
+
+    useEffect(() => {
+        if (isUserLogged) {
+            navigateTo('/', { replace: true });
+        }
+
+    }, [isUserLogged])
+    
 
     return (
         <Routes>
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/login/" element={<LogIn />}>
-                    <Route path=":userName" element={<LoginForm />} />
-                    <Route path="users-not-found" element={<UsersNotFound />} />
-                </Route>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login/" element={<LogIn />}>
+                <Route path=":userName" element={<LoginForm />} />
+                <Route path="users-not-found" element={<UsersNotFound />} />
+            </Route>
 
                 {/* Home */}
                 <Route element={<ProtectedRoutes />}>
