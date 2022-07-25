@@ -1,0 +1,10 @@
+@use 'global/_variables.scss';
+
+.adult-indicator-container {
+    border: 5px solid variables.$error-color;
+    border-radius: 50%;
+    font-weight: bold;
+    color: variables.$primary-text-color;
+
+    padding: .5rem .2rem;
+}

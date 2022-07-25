@@ -1,0 +1,63 @@
+@use 'global/_variables.scss';
+
+.hero-section {
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .backdrop {
+        object-fit: cover;
+        width: 60%;
+        height: 100%;
+    }
+
+    .movie-info-container {
+        background: variables.$primary-color;
+        
+        width: 40%;
+        height: 100%;
+
+        padding: 0 1.5rem 2rem 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        position: relative;
+        
+
+        &::after {
+            content: '';
+            background: linear-gradient(90deg, #000, #000, #00000018, #00000000);
+
+            width: 10rem;
+            height: 100%;
+
+            display: block;
+
+            position: absolute;
+            top: 0;
+            right: -10rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin: .2rem 0;
+        }
+
+        .details-section {
+            font-weight: bold;
+
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            text-transform: uppercase;
+        }
+
+        .overview {
+            font-size: 1.2rem;
+        }
+    }
+}

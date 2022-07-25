@@ -1,0 +1,11 @@
+@use 'global/_variables.scss';
+
+.friendly-indicator-container {
+    border: 5px solid variables.$succes-color;
+    border-radius: 50%;
+    padding: .3rem .5rem;
+
+    .icon {
+        font-size: 1.2rem;
+    }
+}

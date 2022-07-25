@@ -1,0 +1,12 @@
+@use 'global/_variables.scss';
+
+.link {
+    color: variables.$primary-text-color;
+    text-decoration: none;
+    padding: 0 0 .5rem 0;
+
+    &.active {
+        color: variables.$secondary-color;
+        border-bottom: 1px solid variables.$secondary-color;
+    }
+}

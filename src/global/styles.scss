@@ -1,0 +1,13 @@
+@use 'global/_variables.scss';
+
+* {
+    box-sizing: border-box;
+    color: variables.$primary-text-color;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: variables.$primary-text-font;
+    min-height: 100vh;
+}
