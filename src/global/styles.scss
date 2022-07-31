@@ -11,3 +11,13 @@ body {
     font-family: variables.$primary-text-font;
     min-height: 100vh;
 }
+
+ul, ol {
+    list-style: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

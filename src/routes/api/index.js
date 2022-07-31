@@ -8,11 +8,11 @@ const routes = {
     },
 
     series: {
-
+        getPopular: `${BASE_URL}tv/popular${API_KEY}`
     },
 
     people: {
-
+        getPopular: `${BASE_URL}person/popular${API_KEY}`
     }
 }
 

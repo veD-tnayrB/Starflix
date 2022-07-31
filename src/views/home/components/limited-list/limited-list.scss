@@ -1,0 +1,47 @@
+@use 'global/_variables.scss';
+
+.limited-list-container {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        font-size: 2rem;
+        padding: 1.5rem 1rem;
+        align-self: start;
+        color: variables.$primary-text-color;
+    }
+    
+    .limited-list {
+        align-self: center;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .5rem;
+
+        .more-button-item {
+            .more-button {
+                background: variables.$third-color;
+                width: 12rem;
+                height: 100%;
+
+                transition: background .2s linear;
+
+                .icon {
+                    font-size: 3rem;
+                    color: variables.$secondary-text-color;
+                    transition: margin .2s linear;
+
+                }
+
+                &:hover {
+                    background: variables.$fourth-color;
+
+                    .icon {
+                        margin: 0 0 0 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.media-item {
+    .media {
+        width: 12rem;
+
+        .media-image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
