@@ -14,6 +14,10 @@ function Movie({ movie }) {
                      className="media-image"
                      src={`${IMAGE_BASE_URL}${movie.poster_path}`} 
                     />
+
+                    <div className="media-info">
+                        {movie.title}
+                    </div>
                 </Link>
             </div>
         </li>

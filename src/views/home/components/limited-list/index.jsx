@@ -1,29 +1,25 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import './limited-list.scss';
 function LimitedList({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }) {
-    const navigateTo = useNavigate();
-
-    function redirectTo() {
-        navigateTo(urlToBeRedirected);
-    }
 
     return (
         <div className="limited-list-container">
-            <h3>{listTitle}</h3>
+                <div className="title-container">
+                    <Link 
+                     to={urlToBeRedirected}
+                     className="title-link"
+                    >
+                        <h3>{listTitle}</h3>
+                        <ArrowForwardIcon className="icon"/>
+                    </Link>
+                </div>
+            
+            
             <ul className="limited-list">
                 {items}
-
-                <li className="more-button-item">
-                    <button 
-                     className="more-button" 
-                     onClick={redirectTo}
-                    >
-                        <ArrowForwardIcon className="icon"/>
-                    </button>
-                </li>
             </ul>
         </div>
     )

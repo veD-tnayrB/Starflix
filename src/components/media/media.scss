@@ -1,11 +1,43 @@
+@use 'global/_variables.scss';
+
 .media-item {
     .media {
+        position: relative;
         width: 12rem;
+        transition: transform .2s linear;
+        
+
+        .media-info {
+            background: #080808ae;
+            text-align: center;
+
+            width: 100%;
+
+            position: absolute;
+            top: 0;
+            bottom: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow-y: hidden;
+            transition: bottom .2s linear;
+        }
 
         .media-image {
             object-fit: cover;
             width: 100%;
             height: 100%;
+        }
+    }
+
+    &:hover {
+        .media {
+            transform: scale(1.05);
+            .media-info {
+                bottom: 0;
+            }
         }
     }
 }

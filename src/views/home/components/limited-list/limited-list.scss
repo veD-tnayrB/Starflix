@@ -4,11 +4,42 @@
     display: flex;
     flex-direction: column;
 
-    h3 {
-        font-size: 2rem;
-        padding: 1.5rem 1rem;
-        align-self: start;
-        color: variables.$primary-text-color;
+    .title-container {
+        cursor: pointer;
+        
+        .title-link {
+            align-self: start;
+            text-decoration: none;
+
+            padding: 1.5rem 1rem;   
+
+            display: flex;
+            align-items: center;
+
+            transition: all .1s linear;
+
+            h3 {
+                text-decoration: none;
+                color: variables.$primary-text-color;
+                font-size: 2rem;
+            }
+    
+            .icon {
+                font-size: 1.5rem;
+                opacity: 0;
+                margin: .2rem .4rem 0 .4rem;
+                transition: all .1s linear;
+            }
+    
+            &:hover {
+                margin: 0 0 0 1rem;
+    
+                .icon {
+                    opacity: 1;
+                    transform: translateX(.4rem);
+                }
+            }
+        }
     }
     
     .limited-list {
@@ -19,29 +50,29 @@
         justify-content: center;
         gap: .5rem;
 
-        .more-button-item {
-            .more-button {
-                background: variables.$third-color;
-                width: 12rem;
-                height: 100%;
+        // .more-button-item {
+        //     .more-button {
+        //         background: variables.$third-color;
+        //         width: 12rem;
+        //         height: 100%;
 
-                transition: background .2s linear;
+        //         transition: background .2s linear;
 
-                .icon {
-                    font-size: 3rem;
-                    color: variables.$secondary-text-color;
-                    transition: margin .2s linear;
+        //         .icon {
+        //             font-size: 3rem;
+        //             color: variables.$secondary-text-color;
+        //             transition: margin .2s linear;
 
-                }
+        //         }
 
-                &:hover {
-                    background: variables.$fourth-color;
+        //         &:hover {
+        //             background: variables.$fourth-color;
 
-                    .icon {
-                        margin: 0 0 0 1rem;
-                    }
-                }
-            }
-        }
+        //             .icon {
+        //                 margin: 0 0 0 1rem;
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
