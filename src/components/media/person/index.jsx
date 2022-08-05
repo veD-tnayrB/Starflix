@@ -14,6 +14,10 @@ function Person({ person }) {
                      className="media-image" 
                      src={`${IMAGE_BASE_URL}${person.profile_path}`} 
                     />
+
+                    <div className="media-info">
+                        {person.name}
+                    </div>
                 </Link>
             </div>
         </li>
