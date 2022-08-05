@@ -1,0 +1,87 @@
+@use 'global/_variables.scss';
+
+footer {
+    background: variables.$primary-color;
+
+    padding: 2rem 0;
+
+    display: flex;
+    justify-content: space-around;
+
+    .credits-zone {
+        width: 20%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            font-size: .8rem;
+            color: variables.$gray-color;
+        }
+
+        .starflix-credits {
+            margin: 0 0 1.5rem 0;
+
+            .logo-container {
+                margin: 0 0 .5rem 0;
+                
+                .logo-icon {
+                    font-size: 2.2rem;
+                }
+
+                .logo-text {
+                    font-size: 2rem;
+                }
+            }
+
+            .credits {
+
+            }
+        }
+
+        .tmdb-credits {
+            img {
+                width: 10rem;
+                margin: 0 0 .5rem 0;
+            }
+        }
+    }
+
+    .page-information {
+        border: 2px solid transparent;
+        padding: .8rem 1rem;
+
+        &:hover {
+            border: 2px solid variables.$secondary-color;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+        }
+
+        ul {
+            li {
+                margin: .5rem 0;
+
+                a {
+                    font-size: 1.1rem;
+                    text-decoration: none;
+
+                    span {
+                        color: variables.$gray-color;
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+
+                        span {
+                            color: variables.$primary-text-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

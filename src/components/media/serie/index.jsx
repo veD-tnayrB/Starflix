@@ -5,6 +5,7 @@ import '../media.scss';
 
 export
 function Serie({ serie }) {
+    console.log(serie)
 
     return (
         <li className="media-item">
@@ -14,6 +15,10 @@ function Serie({ serie }) {
                      className="media-image" 
                      src={`${IMAGE_BASE_URL}${serie.poster_path}`} 
                     />
+
+                    <div className="media-info">
+                        {serie.name}
+                    </div>
                 </Link>
             </div>
         </li>

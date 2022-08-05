@@ -7,6 +7,7 @@ import { Movie, Serie, Person } from 'components/media';
 import routes from 'routes/api';
 
 import './home.scss';
+import Footer from "components/footer";
 
 
 export
@@ -51,6 +52,7 @@ function Home() {
                  refetch={refetchPeople}
                 />
             </main>
+            <Footer />
         </>
     )
 }

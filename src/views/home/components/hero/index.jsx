@@ -7,7 +7,7 @@ import './hero.scss';
 
 function Hero() {
     const [popularMovies, theresAnError, isLoading, refetch ] = useFetch(routes.movies.getPopular, {results: []});
-    const popularMovie = popularMovies?.results[4];
+    const popularMovie = popularMovies?.results[2];
     const backdropURL = `${IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
     const ageIcon = popularMovie?.adult ? <AdultIndicator /> : <FriendlyIndicator />;
