@@ -22,9 +22,20 @@ const pages = {
     movies: {
         title: 'Movies',
         routes: [
+            
             {
-                name: '',
-                link: ''
+                name: 'Top Rated',
+                link: '/movies#top-rated'
+            },
+
+            {
+                name: 'Upcoming',
+                link: '/movies#upcoming'
+            },
+
+            {
+                name: 'Now Playing',
+                link: '/movies#now-playing'
             }
         ]
     },
@@ -33,8 +44,18 @@ const pages = {
         title: 'Series',
         routes: [
             {
-                name: '',
-                link: ''
+                name: 'On The Air',
+                link: '/series#on-the-air'
+            },
+
+            {
+                name: 'Top Rated',
+                link: '/series#top-rated'
+            },
+
+            {
+                name: 'Airing Today',
+                link: '/series#airing-today'
             }
         ]
     },
@@ -43,8 +64,13 @@ const pages = {
         title: 'People',
         routes: [
             {
-                name: '',
-                link: ''
+                name: 'Latest',
+                link: '/people#latest'
+            },
+
+            {
+                name: 'Popular',
+                link: '/people#popular'
             }
         ]
     },
