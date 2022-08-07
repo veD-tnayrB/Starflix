@@ -6,7 +6,7 @@ Starflix is a platform where you can see advanced information about your movies,
 - First make a clone of this project in any directory on your pc.
 
 - From the console enter the directory and run npm install.
-- Then you can run the project by running ```npm star```
+- Then you can run the project by running ```npm start```
 
 
 ✅ What is the project created with?
