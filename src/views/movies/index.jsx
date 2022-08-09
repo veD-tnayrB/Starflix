@@ -9,6 +9,7 @@ function Movies() {
             <main>
                 ANOTHER HELLO DARLING
             </main>
+            <Footer />
         </>
     )
 }
