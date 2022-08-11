@@ -1,3 +1,4 @@
+import Footer from "components/footer";
 import Navbar from "components/navbar";
 
 export
@@ -6,6 +7,7 @@ function Series() {
         <>
             <Navbar />
             <div>HELLO SERIES</div>
+            <Footer />
         </>
     )
 }
