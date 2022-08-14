@@ -1,0 +1,15 @@
+@use 'global/_variables.scss';
+
+.show-more-button {
+    background: variables.$fourth-color;
+    width: 90%;
+
+    padding: .2rem 0;
+    margin: .5rem;
+
+    align-self: center;
+
+    .icon {
+        fill: variables.$primary-text-color;
+    }
+}

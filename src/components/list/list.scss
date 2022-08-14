@@ -5,24 +5,23 @@
     flex-direction: column;
 
     .title-container {
+        padding: 1.5rem 1rem;
         cursor: pointer;
         
+        h3 {
+            text-decoration: none;
+            color: variables.$primary-text-color;
+            font-size: 2rem;
+        }
+
         .title-link {
             align-self: start;
-            text-decoration: none;
-
-            padding: 1.5rem 1rem;   
+            text-decoration: none;   
 
             display: flex;
             align-items: center;
 
             transition: all .1s linear;
-
-            h3 {
-                text-decoration: none;
-                color: variables.$primary-text-color;
-                font-size: 2rem;
-            }
     
             .icon {
                 font-size: 1.5rem;
