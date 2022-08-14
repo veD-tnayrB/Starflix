@@ -1,7 +1,7 @@
 import { Serie } from "components/media";
 import useFetch from "hooks/useFetch";
 import routes from "routes/api";
-import LimitedList from "../limited-list";
+import List from "../../../../components/list";
 
 export default
 function PopularSeries() {
@@ -9,7 +9,7 @@ function PopularSeries() {
     const popularSeriesItems = popularSeries.results.map(serie => <Serie key={serie.id} serie={serie} />);
 
     return (
-        <LimitedList
+        <List
             listTitle="Popular Series"
             items={popularSeriesItems}
             urlToBeRedirected="/"
