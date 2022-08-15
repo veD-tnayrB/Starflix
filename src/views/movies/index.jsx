@@ -9,7 +9,7 @@ function Movies() {
     return (
         <>
             <Navbar />
-            <main>
+            <main className="movies-page">
                 <TopRatedMovies />
             </main>
             <Footer />

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default
-function TitleWithLink(urlToBeRedirected, listTitle) {
+function TitleWithLink({ urlToBeRedirected, listTitle }) {
 
     return (
         <Link

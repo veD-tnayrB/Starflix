@@ -12,12 +12,19 @@ function useFetch(url, defaultValue = [], handleData) {
             const response = await fetch(url);
             const info = await response.json();
             const theresAnError = info.status_message;
+            const theresHadleDataFunction = handleData;
 
             if (theresAnError) {
                 throw Error(info.status_message);
             }
             
-            handleData(info);
+            if (theresHadleDataFunction) {
+                handleData(info);
+                setIsLoading(false);
+                return;
+            }
+
+            setData(info)
             setIsLoading(false);
 
         } catch (error) {
