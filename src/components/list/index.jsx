@@ -4,7 +4,7 @@ import './list.scss';
 
 function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }) {
     const theresTitle = listTitle;
-    const redirect = urlToBeRedirected
+    const redirect = urlToBeRedirected;
 
     return (
         <div className="limited-list-container">
