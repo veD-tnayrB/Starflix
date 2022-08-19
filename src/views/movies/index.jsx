@@ -5,7 +5,6 @@ import './movies.scss';
 
 export
 function Movies() {
-
     return (
         <>
             <Navbar />
