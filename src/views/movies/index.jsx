@@ -1,15 +1,35 @@
+import routes from "routes/api";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
-import TopRatedMovies from "./components/sections/TopRated";
+import Section from "./components/section/Section";
+
 import './movies.scss';
 
 export
-function Movies() {
+    function Movies() {
     return (
         <>
             <Navbar />
             <main className="movies-page">
-                <TopRatedMovies />
+                <Section
+                    url={routes.movies.getPopular}
+                    sectionTitle="Most Popular Movies"
+                />
+
+                <Section
+                    url={routes.movies.getUpcoming}
+                    sectionTitle="Upcoming Movies"
+                />
+
+                <Section
+                    url={routes.movies.getNowPlaying}
+                    sectionTitle="Now Playing Movies"
+                />
+
+                <Section
+                    url={routes.movies.getTopRated}
+                    sectionTitle="Top Rated Movies"
+                />
             </main>
             <Footer />
         </>

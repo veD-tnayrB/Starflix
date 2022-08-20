@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Defer, Img } from 'react-progressive-loader'
 import { IMAGE_BASE_URL } from "routes/api";
 
 import '../media.scss';
@@ -10,10 +11,16 @@ function Movie({ movie }) {
         <li className="media-item">
             <div className="media">
                 <Link to="">
-                    <img 
-                     className="media-image"
-                     src={`${IMAGE_BASE_URL}${movie.poster_path}`} 
-                    />
+                    <Defer
+                        render={() =>
+                        <img 
+                            className="media-image"
+                            src={`${IMAGE_BASE_URL}${movie.poster_path}`} 
+                            alt={movie.title}
+                        />
+                        }
+                    >
+                    </Defer>
 
                     <div className="media-info">
                         {movie.title}

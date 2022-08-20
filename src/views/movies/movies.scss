@@ -2,5 +2,9 @@
     section {
         display: flex;
         flex-direction: column;
+
+        .limited-list {
+            min-height: 56rem;
+        }
     }
 }

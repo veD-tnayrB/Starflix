@@ -1,13 +1,23 @@
-import * as React from 'react';
+import { InView } from 'react-intersection-observer';
 import TitleWithLink from './TitleWithLink';
+import Loading from 'components/loading';
+
 import './list.scss';
+import { useState } from 'react';
 
 function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }) {
+    const [isInView, setIsInView] = useState(true);
     const theresTitle = listTitle;
     const redirect = urlToBeRedirected;
 
+    function handleView(isElementInView, entry) {
+        setIsInView(isElementInView);
+    }
+
     return (
-        <div className="limited-list-container">
+        <InView onChange={handleView}>
+            {isLoading || !isInView && <Loading />}
+            <div className="limited-list-container">
                 {
                     theresTitle &&
                     <div className="title-container">
@@ -26,11 +36,14 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }
                     </div>
                 }
             
-            
-            <ul className="limited-list">
-                {items}
-            </ul>
+            {
+                isInView &&
+                <ul className="limited-list">
+                    {items}
+                </ul>
+            }
         </div>
+        </InView>
     )
 }
 

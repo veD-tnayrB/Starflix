@@ -1,14 +1,9 @@
-import loadingIcon from './assets/loading.svg';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 export default
 function LoadingIcon() {
 
     return (
-        <img 
-         src={loadingIcon}
-         alt="Loading"
-         title="Loading..."
-         className="loading-icon"
-        />
+        <RefreshIcon className="loading-icon" />
     )
 }
