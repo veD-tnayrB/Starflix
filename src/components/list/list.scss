@@ -1,6 +1,8 @@
 @use 'global/_variables.scss';
 
 .limited-list-container {
+    min-height: 62rem;
+
     display: flex;
     flex-direction: column;
 

@@ -1,5 +1,6 @@
 import AdultIndicator from 'components/adult-indicator';
 import FriendlyIndicator from 'components/friendy-indicator';
+import Loading from 'components/loading';
 import useFetch from 'hooks/useFetch';
 import routes, { IMAGE_BASE_URL } from 'routes/api';
 
@@ -16,9 +17,7 @@ function Hero() {
         return <div>{theresAnError}</div>
     }
 
-    if (isLoading) {
-        return <div style={{color: '#000'}}>I AM LOADING</div>
-    }
+    if (isLoading) return <Loading />;
 
     return (
         <section className="hero-section">

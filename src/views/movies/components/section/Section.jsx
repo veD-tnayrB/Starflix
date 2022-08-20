@@ -1,36 +1,38 @@
 import { useState } from "react";
-import { Movie } from "components/media";
 import List from "components/list";
-import useFetch from "hooks/useFetch"
-import routes from "routes/api";
+import { Movie } from "components/media";
 import ShowMore from "components/show-more";
+import useFetch from "hooks/useFetch";
+
 
 export default
-function TopRatedMovies() {
+function Section({ url, sectionTitle }) {
     const [page, setPage] = useState(1);
-    const [movies, setMovies, error, isLoading, refetch] = useFetch(`${routes.movies.getPopular}&page=${page}`, { results: [] }, loadMore);
+    const [movies, setMovies, error, isLoading, refetch] = useFetch(`${url}&page=${page}`, { results: [] }, loadMore);
 
     function loadMore(newMovies) {
-        setMovies(currentMovies => ({...currentMovies, results: [...currentMovies?.results, ...newMovies.results]}))
+        setMovies(currentMovies => (
+            {...currentMovies, results: [...currentMovies?.results, ...newMovies.results]}
+        ))
     }
 
     const topRatedMovies = movies.results.map(movie => (
-        <Movie 
+        <Movie
          key={movie.id}
          movie={movie}
         />
-    ))
+    ));
         
     return (
         <section>
-            <List  
+            <List
              items={topRatedMovies}
-             listTitle="Top Rated Movies"
+             listTitle={sectionTitle}
              isLoading={isLoading}
              error={error}
              refetch={refetch}
             />
-            <ShowMore setPage={setPage} />
+            <ShowMore setPage={setPage} isLoading={isLoading} />
         </section>
     )
 }

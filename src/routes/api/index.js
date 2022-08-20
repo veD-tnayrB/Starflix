@@ -4,7 +4,10 @@ export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original';
 
 const routes = {
     movies: {
-        getPopular: `${BASE_URL}movie/popular${API_KEY}`
+        getPopular: `${BASE_URL}movie/popular${API_KEY}`,
+        getTopRated: `${BASE_URL}movie/top_rated${API_KEY}`,
+        getUpcoming: `${BASE_URL}movie/upcoming${API_KEY}`,
+        getNowPlaying: `${BASE_URL}movie/now_playing${API_KEY}`
     },
 
     series: {

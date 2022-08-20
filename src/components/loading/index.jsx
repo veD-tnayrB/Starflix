@@ -1,4 +1,4 @@
-import LoadingIcon from "./LoadingIcon";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import './loading.scss';
 
 export default
@@ -7,7 +7,7 @@ function Loading() {
     return (
         <div className="loading">
             <span>Loading...</span>
-            <LoadingIcon />
+            <RefreshIcon className="loading-icon" />
         </div>
     )
 }
