@@ -22,10 +22,9 @@ const pages = {
     movies: {
         title: 'Movies',
         routes: [
-            
             {
-                name: 'Top Rated',
-                link: '/movies#top-rated'
+                name: 'Popular Movies',
+                link: '/movies#popular-movies'
             },
 
             {
@@ -36,7 +35,12 @@ const pages = {
             {
                 name: 'Now Playing',
                 link: '/movies#now-playing'
-            }
+            },
+
+            {
+                name: 'Top Rated',
+                link: '/movies#top-rated'
+            },
         ]
     },
 
