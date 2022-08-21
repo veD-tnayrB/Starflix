@@ -6,7 +6,7 @@ import useFetch from "hooks/useFetch";
 
 
 export default
-function Section({ url, sectionTitle }) {
+function Section({ url, sectionTitle, sectionId }) {
     const [page, setPage] = useState(1);
     const [movies, setMovies, error, isLoading, refetch] = useFetch(`${url}&page=${page}`, { results: [] }, loadMore);
 
@@ -27,12 +27,14 @@ function Section({ url, sectionTitle }) {
         <section>
             <List
              items={topRatedMovies}
+             listId={sectionId}
              listTitle={sectionTitle}
              isLoading={isLoading}
              error={error}
              refetch={refetch}
-            />
-            <ShowMore setPage={setPage} isLoading={isLoading} />
+            >
+                <ShowMore setPage={setPage} isLoading={isLoading} />
+            </List>
         </section>
     )
 }

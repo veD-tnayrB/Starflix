@@ -1,4 +1,4 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LoadingIcon from 'components/loading/LoadingIcon';
 
 import './showMore.scss';
@@ -10,7 +10,7 @@ function ShowMore({ setPage, isLoading }) {
         setPage(currentPage => currentPage + 1);
     }
 
-    const icon = isLoading ? <LoadingIcon /> : <ArrowDropDownIcon className="icon" />;
+    const icon = isLoading ? <LoadingIcon /> : <ChevronRightIcon className="icon" />;
 
     return (
         <button 

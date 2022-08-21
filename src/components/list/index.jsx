@@ -5,7 +5,7 @@ import Loading from 'components/loading';
 import './list.scss';
 import { useState } from 'react';
 
-function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }) {
+function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch, children, listId }) {
     const [isInView, setIsInView] = useState(true);
     const theresTitle = listTitle;
     const redirect = urlToBeRedirected;
@@ -17,7 +17,7 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }
     return (
         <InView onChange={handleView}>
             {isLoading || !isInView && <Loading />}
-            <div className="limited-list-container">
+            <div className="limited-list-container" id={listId}>
                 {
                     theresTitle &&
                     <div className="title-container">
@@ -26,8 +26,8 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }
                             ?
                             
                             <TitleWithLink 
-                            urlToBeRedirected={urlToBeRedirected}
-                            listTitle={listTitle}
+                             urlToBeRedirected={urlToBeRedirected}
+                             listTitle={listTitle}
                             />
 
                             : 
@@ -40,6 +40,7 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch }
                 isInView &&
                 <ul className="limited-list">
                     {items}
+                    {children}
                 </ul>
             }
         </div>
