@@ -6,6 +6,8 @@
         position: relative;
         width: 12rem;
         transition: transform .2s linear;
+        display: flex;
+        align-content: center;
 
         .media-info {
             background: #080808ae;

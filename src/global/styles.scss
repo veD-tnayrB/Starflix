@@ -24,4 +24,12 @@ button {
 
 main {
     min-height: 100vh;
+    padding: 0 0 3rem 0;
+
+    section {
+        .limited-list {
+            min-height: 56rem;
+        }
+    }
 }
+

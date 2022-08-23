@@ -1,9 +1,7 @@
 import routes from "routes/api";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
-import Section from "./components/section/Section";
-
-import './movies.scss';
+import Section from "./components/section";
 
 export
     function Movies() {

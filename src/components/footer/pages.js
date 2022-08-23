@@ -68,12 +68,7 @@ const pages = {
         title: 'People',
         routes: [
             {
-                name: 'Latest',
-                link: '/people#latest'
-            },
-
-            {
-                name: 'Popular',
+                name: 'Popular People',
                 link: '/people#popular'
             }
         ]
