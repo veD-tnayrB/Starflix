@@ -4,7 +4,7 @@ import Footer from "components/footer";
 import Section from "./components/section";
 
 export
-    function Movies() {
+function Movies() {
     return (
         <>
             <Navbar />
