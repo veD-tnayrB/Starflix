@@ -23,7 +23,7 @@ const pages = {
         title: 'Movies',
         routes: [
             {
-                name: 'Popular Movies',
+                name: 'Most Popular Movies',
                 link: '/movies#popular-movies'
             },
 
@@ -48,6 +48,11 @@ const pages = {
         title: 'Series',
         routes: [
             {
+                name: 'Most Popular Series',
+                link: '/series/#popular'
+            },
+
+            {
                 name: 'On The Air',
                 link: '/series#on-the-air'
             },
@@ -68,7 +73,7 @@ const pages = {
         title: 'People',
         routes: [
             {
-                name: 'Popular People',
+                name: 'Most Popular People',
                 link: '/people#popular'
             }
         ]

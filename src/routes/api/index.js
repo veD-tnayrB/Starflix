@@ -11,7 +11,10 @@ const routes = {
     },
 
     series: {
-        getPopular: `${BASE_URL}tv/popular${API_KEY}`
+        getPopular: `${BASE_URL}tv/popular${API_KEY}`,
+        getTopRated: `${BASE_URL}tv/top_rated${API_KEY}`,
+        getOnTheAir: `${BASE_URL}tv/on_the_air${API_KEY}`,
+        getAiring: `${BASE_URL}tv/airing_today${API_KEY}`
     },
 
     people: {

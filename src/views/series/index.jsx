@@ -12,25 +12,25 @@ function Series() {
                 <Section
                     sectionId="popular"
                     url={routes.series.getPopular}
-                    sectionTitle="Most Popular Movies"
+                    sectionTitle="Most Popular Series"
                 />
 
                 <Section
-                    sectionId="upcoming"
-                    url={routes.series.getUpcoming}
-                    sectionTitle="Upcoming Movies"
-                />
-
-                <Section
-                    sectionId="now-playing"
-                    url={routes.series.getNowPlaying}
-                    sectionTitle="Now Playing Movies"
+                    sectionId="on-the-air"
+                    url={routes.series.getOnTheAir}
+                    sectionTitle="On The Air"
                 />
 
                 <Section
                     sectionId="top-rated"
                     url={routes.series.getTopRated}
-                    sectionTitle="Top Rated Movies"
+                    sectionTitle="Top Rated Series"
+                />
+
+                <Section
+                    sectionId="airing-today"
+                    url={routes.series.getAiring}
+                    sectionTitle="Airing Today"
                 />
             </main>
             <Footer />
