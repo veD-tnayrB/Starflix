@@ -1,22 +1,23 @@
 @use 'global/_variables.scss';
 
-.hero-section {
+section.hero-section {
     height: 90vh;
     position: relative;
     
     display: flex;
+    flex-direction: row;
     align-items: center;
 
     .backdrop {
         object-fit: cover;
-        width: 60%;
+        width: 65%;
         height: 100%;
     }
 
     .movie-info-container {
         background: variables.$primary-color;
         
-        width: 36%;
+        width: 35%;
         height: 100%;
 
         padding: 0 .5rem 2rem 2rem;
