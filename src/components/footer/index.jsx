@@ -6,7 +6,7 @@ import pages from './pages';
 import './footer.scss';
 
 export default
-function Footer() {
+    function Footer() {
 
     return (
         <footer>
@@ -15,18 +15,20 @@ function Footer() {
                 <ApiCredits />
             </article>
 
-            <Card 
-             info={pages.home}
-            />
-            <Card 
-             info={pages.movies}
-            />
-            <Card 
-             info={pages.series}
-            />
-            <Card 
-             info={pages.people}
-            />
+            <div className="pages-section">
+                <Card
+                    info={pages.home}
+                />
+                <Card
+                    info={pages.movies}
+                />
+                <Card
+                    info={pages.series}
+                />
+                <Card
+                    info={pages.people}
+                />
+            </div>
         </footer>
     )
 }

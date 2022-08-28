@@ -3,7 +3,7 @@
 section.hero-section {
     height: 90vh;
     position: relative;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,7 +16,7 @@ section.hero-section {
 
     .movie-info-container {
         background: variables.$primary-color;
-        
+
         width: 35%;
         height: 100%;
 
@@ -27,7 +27,7 @@ section.hero-section {
         justify-content: center;
 
         position: relative;
-        
+
 
         &::after {
             content: '';
@@ -55,11 +55,50 @@ section.hero-section {
             align-items: center;
             gap: 1rem;
 
+            padding: .5rem 0;
+
             text-transform: uppercase;
         }
 
         .overview {
             font-size: 1.2rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    section.hero-section {
+        display: flex;
+        flex-direction: column;
+
+        .backdrop {
+            width: 100%;
+            
+        }
+
+        .movie-info-container {
+            background: #0000009c;
+
+            width: 80%;
+            height: auto;
+
+            padding: 2rem;
+
+            position: absolute;
+
+            &::after {
+                content: '';
+                display: none;
+            }
+
+            .title {
+            }
+
+            .details-section {
+            }
+
+            .overview {
+            }
         }
     }
 }

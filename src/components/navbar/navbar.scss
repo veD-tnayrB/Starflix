@@ -18,3 +18,17 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+
+        ul {
+            flex-direction: column;
+
+            .links-container {
+                padding: 1rem 0 0 0;
+            }
+        }
+    }
+}

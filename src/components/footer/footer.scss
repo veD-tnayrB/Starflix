@@ -43,31 +43,140 @@ footer {
         }
     }
 
-    .page-information {
-        padding: .8rem 1rem;
-        
-        h4 {
-            font-size: 1.6rem;
-            margin: 0 0 1rem 0;
-        }
+    .pages-section {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
 
-        ul {
-            li {
-                margin: .8rem 0;
+        .page-information {
+            padding: .8rem 1rem;
+            
+            h4 {
+                font-size: 1.6rem;
+                margin: 0 0 1rem 0;
+            }
+    
+            ul {
+                li {
+                    margin: .8rem 0;
+    
+                    a {
+                        font-size: 1rem;
+                        text-decoration: none;
+    
+                        span {
+                            color: variables.$gray-color;
+                        }
+    
+                        &:hover {
+    
+                            span {
+                                color: variables.$primary-text-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1025px ) {
+    footer {
+        flex-direction: row;
+
+        .pages-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+
+        .credits-zone {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+    
+            .starflix-credits {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media (max-width: 680px) {
+    footer {
+        width: 100%;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        .credits-zone {
+            width: 100%;
+
+            padding: 0 1rem;
+
+            flex-direction: column;
+            justify-content: column;
+            align-items: center;
+            gap: 3rem;
+    
+            .starflix-credits {
+                width: 100%;
+                margin: 2rem 0 0 0;
+
+                flex-direction: column;
+                justify-content: center;
+
+                .logo-container {
+                    margin: 0 0 .5rem 0;
+
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .credits {
+                    text-align: center;
+                }
+            }
+
+            .tmdb-credits {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
                 a {
-                    font-size: 1rem;
-                    text-decoration: none;
+                    width: auto;
+                    margin: 0 0 .3rem 0;
+                }
 
-                    span {
-                        color: variables.$gray-color;
-                    }
+                .credits {
+                    text-align: center;
+                }
+            }
+        }
 
-                    &:hover {
+        .pages-section {
+            .page-information {
+                width: 50%;
 
-                        span {
-                            color: variables.$primary-text-color;
-                        }
+                h4 {
+                    text-align: center;
+                }
+
+                ul {
+                    li {
+                        text-align: center;
+
+                        display: flex;
+                        justify-content: center;
                     }
                 }
             }
