@@ -3,11 +3,15 @@
 .media-item {
     .media {
         background: variables.$fourth-color;
-        position: relative;
+
         width: 12rem;
-        transition: transform .2s linear;
+        min-width: 6.34rem;
+        
         display: flex;
         align-content: center;
+
+        position: relative;
+        transition: transform .2s linear;
 
         .media-info {
             background: #080808ae;
