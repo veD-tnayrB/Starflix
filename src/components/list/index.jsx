@@ -1,5 +1,6 @@
 import TitleWithLink from './TitleWithLink';
 import Loading from 'components/loading';
+import Error from 'components/error';
 
 import './list.scss';
 
@@ -29,6 +30,7 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch, 
 
 
             <div>
+                {error && <Error refetch={refetch} />}
                 {isLoading && <Loading />}
                 <ul className="limited-list">
                     {items}
