@@ -1,5 +1,6 @@
 export default
 function Error({ refetch }) {
+    console.log(refetch);
 
     return (
         <div>

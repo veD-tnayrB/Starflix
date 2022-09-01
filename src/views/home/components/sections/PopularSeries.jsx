@@ -5,7 +5,7 @@ import List from "../../../../components/list";
 
 export default
 function PopularSeries() {
-    const [popularSeries, seriesError, isSeriesLoading, refetchSeries] = useFetch(routes.series.getPopular, { results: [] });
+    const [popularSeries,, seriesError, isSeriesLoading, refetchSeries] = useFetch(routes.series.getPopular, { results: [] });
     const popularSeriesItems = popularSeries.results.map(serie => <Serie key={serie.id} serie={serie} />);
 
     return (

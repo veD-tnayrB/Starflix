@@ -8,6 +8,10 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch, 
     const theresTitle = listTitle;
     const redirect = urlToBeRedirected;
 
+    if (error) return <Error refetch={refetch} />;
+    if (isLoading) return <Loading />;
+    console.log(error)
+
     return (
         <div className="limited-list-container" id={listId}>
             {
@@ -30,8 +34,6 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch, 
 
 
             <div>
-                {error && <Error refetch={refetch} />}
-                {isLoading && <Loading />}
                 <ul className="limited-list">
                     {items}
                     {children}
