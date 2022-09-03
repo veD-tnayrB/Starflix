@@ -1,10 +1,16 @@
+import { useMainContext } from "contexts/main";
 import routes from "routes/api";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 import Section from "./components/section";
+import Loading from "components/loading";
 
 export
 function Movies() {
+    const { isLoading } = useMainContext();
+
+    if (isLoading) return <Loading />;
+    
     return (
         <>
             <Navbar />

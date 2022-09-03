@@ -16,7 +16,7 @@ function Section({ url, sectionTitle, sectionId }) {
         ))
     }
 
-    const topRatedMovies = movies.results.map(movie => (
+    const moviesElements = movies.results.map(movie => (
         <Movie
          key={movie.id}
          movie={movie}
@@ -26,7 +26,7 @@ function Section({ url, sectionTitle, sectionId }) {
     return (
         <section>
             <List
-             items={topRatedMovies}
+             items={moviesElements}
              listId={sectionId}
              listTitle={sectionTitle}
              isLoading={isLoading}
