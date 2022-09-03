@@ -9,8 +9,6 @@ function List({ items, listTitle, urlToBeRedirected, isLoading, error, refetch, 
     const redirect = urlToBeRedirected;
 
     if (error) return <Error refetch={refetch} />;
-    if (isLoading) return <Loading />;
-    console.log(error)
 
     return (
         <div className="limited-list-container" id={listId}>

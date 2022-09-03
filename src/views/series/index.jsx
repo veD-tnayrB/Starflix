@@ -1,10 +1,16 @@
+import { useMainContext } from "contexts/main";
 import Footer from "components/footer";
 import Navbar from "components/navbar";
 import routes from "routes/api";
 import Section from "./components/section";
+import Loading from "components/loading";
 
 export
 function Series() {
+    const { isLoading } = useMainContext();
+
+    if (isLoading) return <Loading />;
+
     return (
         <>
             <Navbar />
