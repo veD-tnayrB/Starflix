@@ -1,70 +1,64 @@
 @use 'global/_variables.scss';
 
-section.hero-section {
-    height: 90vh;
-    position: relative;
+
+
+.backdrop {
+    object-fit: cover;
+    width: 65%;
+    height: 100%;
+}
+
+.movie-info-container {
+    background: variables.$primary-color;
+
+    width: 35%;
+    height: 100%;
+
+    padding: 0 .5rem 2rem 2rem;
 
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
-    .backdrop {
-        object-fit: cover;
-        width: 65%;
+    position: relative;
+
+
+    &::after {
+        content: '';
+        background: linear-gradient(90deg, #000, #000, #00000018, #00000000);
+
+        width: 15rem;
         height: 100%;
+
+        display: block;
+
+        position: absolute;
+        top: 0;
+        right: -14rem;
     }
 
-    .movie-info-container {
-        background: variables.$primary-color;
+    .title {
+        font-size: 2.5rem;
+        margin: .2rem 0;
+    }
 
-        width: 35%;
-        height: 100%;
-
-        padding: 0 .5rem 2rem 2rem;
+    .details-section {
+        font-weight: bold;
 
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        gap: 1rem;
 
-        position: relative;
+        padding: .5rem 0;
 
+        text-transform: uppercase;
+    }
 
-        &::after {
-            content: '';
-            background: linear-gradient(90deg, #000, #000, #00000018, #00000000);
-
-            width: 15rem;
-            height: 100%;
-
-            display: block;
-
-            position: absolute;
-            top: 0;
-            right: -14rem;
-        }
-
-        .title {
-            font-size: 2.5rem;
-            margin: .2rem 0;
-        }
-
-        .details-section {
-            font-weight: bold;
-
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-
-            padding: .5rem 0;
-
-            text-transform: uppercase;
-        }
-
-        .overview {
-            font-size: 1.2rem;
-        }
+    .overview {
+        font-size: 1.2rem;
     }
 }
+
 
 @media (max-width: 1024px) {
     section.hero-section {
@@ -73,7 +67,7 @@ section.hero-section {
 
         .backdrop {
             width: 100%;
-            
+
         }
 
         .movie-info-container {

@@ -3,4 +3,13 @@
 main {
     background: variables.$third-color;
     padding: 0 0 2rem 0;
+
+    section.hero-section {
+        height: 90vh;
+        position: relative;
+    
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 }

@@ -1,24 +1,41 @@
+import { useState, useEffect } from 'react';
+import { getPopular } from 'services/movies';
+import { IMAGE_BASE_URL } from 'services/config';
 import AdultIndicator from 'components/adult-indicator';
 import FriendlyIndicator from 'components/friendy-indicator';
 import Loading from 'components/loading';
-import useFetch from 'hooks/useFetch';
-import routes, { IMAGE_BASE_URL } from 'routes/api';
 
 import './hero.scss';
 
+const DEFAULT_VALUE = {
+    backdrop_path: '',
+    release_date: '',
+    adult: false
+}
+
+export default
 function Hero() {
-    const [popularMovies,, theresAnError ] = useFetch(routes.movies.getPopular, {results: []});
-    const popularMovie = popularMovies?.results[2];
+    const [popularMovie, setPopularMovie] = useState(DEFAULT_VALUE);
+    const [isLoading, setIsLoading] = useState(true);
     const backdropURL = `${IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
     const ageIcon = popularMovie?.adult ? <AdultIndicator /> : <FriendlyIndicator />;
 
-    if (theresAnError) {
-        return <div>{theresAnError}</div>
-    }
+    useEffect(() => {
+        setIsLoading(true);
+
+        getPopular()
+            .then(response => {
+                const firstMovie = response.results[0];
+                setPopularMovie(firstMovie);
+                setIsLoading(false);
+            })
+    }, [])
+
+    if (isLoading) return <Loading />;
 
     return (
-        <section className="hero-section">
+        <>
             <div className="movie-info-container">
                 <h2 className="title">{popularMovie?.title}</h2>
                 <div className="details-section">
@@ -29,13 +46,11 @@ function Hero() {
                 <p className="overview">{popularMovie?.overview}</p>
             </div>
 
-            <img 
-             className="backdrop"
-             alt={popularMovie?.title}
-             src={backdropURL} 
+            <img
+                className="backdrop"
+                alt={popularMovie?.title}
+                src={backdropURL}
             />
-        </section>
+        </>
     )
 }
-
-export default Hero;
