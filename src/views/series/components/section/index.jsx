@@ -1,7 +1,7 @@
 import { useState } from "react";
 import List from "components/list";
 import { Serie } from "components/media";
-import ShowMore from "components/show-more";
+import ShowMore from "components/section/ShowMoreButton";
 import useFetch from "hooks/useFetch";
 
 

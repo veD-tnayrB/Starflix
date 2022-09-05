@@ -1,10 +1,8 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LoadingIcon from 'components/loading/LoadingIcon';
 
-import './showMore.scss';
-
 export default
-function ShowMore({ setPage, isLoading }) {
+function ShowMoreButton({ setPage, isLoading }) {
 
     function showMore() {
         setPage(currentPage => currentPage + 1);

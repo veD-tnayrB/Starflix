@@ -1,21 +1,43 @@
-import { useMainContext } from "contexts/main";
-import routes from "routes/api";
+import { getNowPlaying, getPopular, getTopRated, getUpcoming } from "services/movies";
 import Navbar from "components/navbar";
+import Section from "components/section";
 import Footer from "components/footer";
-import Section from "./components/section";
-import Loading from "components/loading";
 
 export
 function Movies() {
-    const { isLoading } = useMainContext();
 
-    if (isLoading) return <Loading />;
-    
     return (
         <>
             <Navbar />
             <main className="movies-page">
                 <Section
+                    media="movie"
+                    sectionId="popular-movies"
+                    sectionTitle="Most Popular Movies"
+                    service={getPopular}
+                />
+
+                <Section
+                    media="movie"
+                    sectionId="top-rated"
+                    sectionTitle="Top Rated Movies"
+                    service={getTopRated}
+                />
+
+                <Section
+                    media="movie"
+                    sectionId="upcoming"
+                    sectionTitle="Upcoming Movies"
+                    service={getUpcoming}
+                />
+
+                <Section
+                    media="movie"
+                    sectionId="now-playing"
+                    sectionTitle="Now Playing Movies"
+                    service={getNowPlaying}
+                />
+                {/* <Section
                     sectionId="popular"
                     url={routes.movies.getPopular}
                     sectionTitle="Most Popular Movies"
@@ -37,7 +59,7 @@ function Movies() {
                     sectionId="top-rated"
                     url={routes.movies.getTopRated}
                     sectionTitle="Top Rated Movies"
-                />
+                /> */}
             </main>
             <Footer />
         </>

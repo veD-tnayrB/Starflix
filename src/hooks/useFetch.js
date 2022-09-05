@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useMainContext } from "contexts/main";
 
 function useFetch(url, defaultValue = [], handleData) {
     const [data, setData] = useState(defaultValue);
-    const { isLoading, setIsLoading } = useMainContext();
+    const { isLoading, setIsLoading } = useState(true);
     const [error, setError] = useState('');
 
     async function makeRequest() {
