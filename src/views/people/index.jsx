@@ -1,18 +1,21 @@
 import Footer from "components/footer";
 import Navbar from "components/navbar";
+import Section from "components/section";
+import { getPopular } from "services/people";
 
 export
-function People() {
+    function People() {
 
     return (
         <>
             <Navbar />
-            <main> 
-                {/* <Section 
-                    sectionId="popular"
+            <main className="people-page">
+                <Section
+                    media="person"
+                    sectionId="popular-people"
                     sectionTitle="Most Popular People"
-                    url={routes.people.getPopular}
-                /> */}
+                    service={getPopular}
+                />
             </main>
             <Footer />
         </>

@@ -14,6 +14,7 @@ function Serie({ serie }) {
                             className="media-image" 
                             src={`${IMAGE_BASE_URL}${serie.poster_path}`} 
                             alt={serie.name}
+                            loading="lazy"
                         />
                     <div className="media-info">
                         {serie.name}
