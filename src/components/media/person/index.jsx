@@ -14,6 +14,7 @@ function Person({ person }) {
                             className="media-image"
                             src={`${IMAGE_BASE_URL}${person.profile_path}`}
                             alt={person.name}
+                            loading="lazy"
                         />
                     <div className="media-info">
                         {person.name}
