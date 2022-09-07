@@ -1,6 +1,8 @@
+import { getAiring, getOnTheAir, getPopular, getTopRated } from "services/series";
 import Footer from "components/footer";
 import Navbar from "components/navbar";
 import Loading from "components/loading";
+import Section from "components/section";
 
 export
 function Series() {
@@ -9,29 +11,33 @@ function Series() {
         <>
             <Navbar />
             <main className="series-page">
-                {/* <Section
-                    sectionId="popular"
-                    url={routes.series.getPopular}
+                <Section
+                    media="serie"
+                    sectionId="popular-series"
                     sectionTitle="Most Popular Series"
+                    service={getPopular}
                 />
 
                 <Section
+                    media="serie"
                     sectionId="on-the-air"
-                    url={routes.series.getOnTheAir}
                     sectionTitle="On The Air"
+                    service={getOnTheAir}
                 />
 
                 <Section
+                    media="serie"
                     sectionId="top-rated"
-                    url={routes.series.getTopRated}
                     sectionTitle="Top Rated Series"
+                    service={getTopRated}
                 />
 
                 <Section
-                    sectionId="airing-today"
-                    url={routes.series.getAiring}
-                    sectionTitle="Airing Today"
-                /> */}
+                    media="serie"
+                    sectionId="airing"
+                    sectionTitle="Airing"
+                    service={getAiring}
+                />
             </main>
             <Footer />
         </>
