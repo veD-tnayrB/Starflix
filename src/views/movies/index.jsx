@@ -1,7 +1,8 @@
-import { getNowPlaying, getPopular, getTopRated, getUpcoming } from "services/movies";
+import { getNowPlaying, getPopular, getTopRated, getUpcoming, search } from "services/movies";
 import Navbar from "components/navbar";
 import Section from "components/section";
 import Footer from "components/footer";
+import Searchbar from "components/search-bar";
 
 export
 function Movies() {
@@ -10,6 +11,10 @@ function Movies() {
         <>
             <Navbar />
             <main className="movies-page">
+                <Searchbar 
+                 service={search}
+                />
+
                 <Section
                     media="movie"
                     sectionId="popular-movies"
@@ -37,29 +42,6 @@ function Movies() {
                     sectionTitle="Now Playing Movies"
                     service={getNowPlaying}
                 />
-                {/* <Section
-                    sectionId="popular"
-                    url={routes.movies.getPopular}
-                    sectionTitle="Most Popular Movies"
-                />
-
-                <Section
-                    sectionId="upcoming"
-                    url={routes.movies.getUpcoming}
-                    sectionTitle="Upcoming Movies"
-                />
-
-                <Section
-                    sectionId="now-playing"
-                    url={routes.movies.getNowPlaying}
-                    sectionTitle="Now Playing Movies"
-                />
-
-                <Section
-                    sectionId="top-rated"
-                    url={routes.movies.getTopRated}
-                    sectionTitle="Top Rated Movies"
-                /> */}
             </main>
             <Footer />
         </>

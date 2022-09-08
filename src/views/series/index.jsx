@@ -1,8 +1,9 @@
-import { getAiring, getOnTheAir, getPopular, getTopRated } from "services/series";
+import { getAiring, getOnTheAir, getPopular, getTopRated, search } from "services/series";
 import Footer from "components/footer";
 import Navbar from "components/navbar";
 import Loading from "components/loading";
 import Section from "components/section";
+import Searchbar from "components/search-bar";
 
 export
 function Series() {
@@ -11,6 +12,10 @@ function Series() {
         <>
             <Navbar />
             <main className="series-page">
+                <Searchbar 
+                    service={search}
+                />
+
                 <Section
                     media="serie"
                     sectionId="popular-series"

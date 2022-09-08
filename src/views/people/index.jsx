@@ -1,7 +1,8 @@
 import Footer from "components/footer";
 import Navbar from "components/navbar";
+import Searchbar from "components/search-bar";
 import Section from "components/section";
-import { getPopular } from "services/people";
+import { getPopular, search } from "services/people";
 
 export
     function People() {
@@ -10,6 +11,10 @@ export
         <>
             <Navbar />
             <main className="people-page">
+                <Searchbar 
+                    service={search}
+                />
+
                 <Section
                     media="person"
                     sectionId="popular-people"
