@@ -4,7 +4,7 @@ import { IMAGE_BASE_URL } from 'services/config';
 import '../media.scss';
 
 export
-function Serie({ serie }) {
+function Serie(props) {
 
     return (
         <li className="media-item">
@@ -12,12 +12,12 @@ function Serie({ serie }) {
                 <Link to="">
                         <img 
                             className="media-image" 
-                            src={`${IMAGE_BASE_URL}${serie.poster_path}`} 
-                            alt={serie.name}
+                            src={`${IMAGE_BASE_URL}${props.poster_path}`} 
+                            alt={props.name}
                             loading="lazy"
                         />
                     <div className="media-info">
-                        {serie.name}
+                        {props.name}
                     </div>
                 </Link>
             </div>

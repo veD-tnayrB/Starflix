@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { Movie, Person, Serie } from "components/media";
 import ShowMoreButton from "./ShowMoreButton";
 import Title from "./Title";
+import List from "components/list";
 
 import './section.scss';
 
 
+
 export default
-function Section({ service, sectionTitle, sectionId, isLimitedSection = false, media }) {
+function Section({ service, sectionTitle, sectionId, isLimitedSection = false, type }) {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -25,38 +26,13 @@ function Section({ service, sectionTitle, sectionId, isLimitedSection = false, m
                     setIsLoading(false);
                     return;
                 }
-                
+
                 setResults(previousResults => [...previousResults, ...response.results]);
                 setIsLoading(false);
             });
 
         return () => controller.abort();
     }, [page])
-
-    const elementsResults = results.map(element => {
-        if (media === 'movie') {
-            return <Movie
-                        key={element.id}
-                        movie={element}
-                    />
-        }
-
-        if (media === 'serie') {
-            return <Serie
-                        key={element.id}
-                        serie={element}
-                    />
-        }
-
-        if (media === 'person') {
-            return <Person
-                        key={element.id}
-                        person={element}
-                    />
-        }
-
-        
-    });
 
     return (
         <section>
@@ -66,20 +42,19 @@ function Section({ service, sectionTitle, sectionId, isLimitedSection = false, m
             >
                 <Title title={sectionTitle} />
 
-                <div>
-                    <ul className="limited-list">
-                        {elementsResults}
-
-                        {
-                            !isLimitedSection && 
-                            <ShowMoreButton
-                                setPage={setPage}
-                                isLoading={isLoading}
-                            />
-                        }
-                    </ul>
+                <List
+                    items={results}
+                    type={type}
+                >
+                    {
+                        !isLimitedSection &&
+                        <ShowMoreButton
+                            setPage={setPage}
+                            isLoading={isLoading}
+                        />
+                    }
+                </List>
                 </div>
-            </div>
         </section>
     )
 }

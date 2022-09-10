@@ -1,47 +1,28 @@
-import { getNowPlaying, getPopular, getTopRated, getUpcoming, search } from "services/movies";
+import { useState } from "react";
+import { search } from "services/movies";
 import Navbar from "components/navbar";
-import Section from "components/section";
-import Footer from "components/footer";
 import Searchbar from "components/search-bar";
+import List from "components/list";
+import DefaultContent from "./components/default-content";
+import Footer from "components/footer";
 
 export
 function Movies() {
+    const [searchResults, setSearchResults] = useState({ results: [] });
+    const theresSearchResults = searchResults.results.length > 0;
+    console.log(theresSearchResults)
 
+    const contentToDisplay = theresSearchResults ? <List items={searchResults.results} type="movie" /> : <DefaultContent />;
+    console.log(contentToDisplay)
     return (
         <>
             <Navbar />
             <main className="movies-page">
                 <Searchbar 
                  service={search}
+                 setSearchResults={setSearchResults}
                 />
-
-                <Section
-                    media="movie"
-                    sectionId="popular-movies"
-                    sectionTitle="Most Popular Movies"
-                    service={getPopular}
-                />
-
-                <Section
-                    media="movie"
-                    sectionId="top-rated"
-                    sectionTitle="Top Rated Movies"
-                    service={getTopRated}
-                />
-
-                <Section
-                    media="movie"
-                    sectionId="upcoming"
-                    sectionTitle="Upcoming Movies"
-                    service={getUpcoming}
-                />
-
-                <Section
-                    media="movie"
-                    sectionId="now-playing"
-                    sectionTitle="Now Playing Movies"
-                    service={getNowPlaying}
-                />
+                {contentToDisplay}
             </main>
             <Footer />
         </>

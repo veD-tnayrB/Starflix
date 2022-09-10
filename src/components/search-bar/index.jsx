@@ -4,7 +4,7 @@ import SearchButton from "./SearchButton";
 import './search-bar.scss';
 
 export default
-function Searchbar({ service }) {
+function Searchbar({ service, setSearchResults }) {
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState('');
 
@@ -22,8 +22,8 @@ function Searchbar({ service }) {
 
         service(searchValue)
         .then(response => {
-            console.log(response);
             setIsLoading(false);
+            setSearchResults(response);
         })
     }
 

@@ -19,7 +19,7 @@ function Home() {
                     <Hero />
                 </section>
                 <Section
-                    media="movie"
+                    type="movie"
                     sectionId="popular-movies"
                     sectionTitle="Popular Movies"
                     isLimitedSection={true}
@@ -27,7 +27,7 @@ function Home() {
                 />
 
                 <Section
-                    media="serie"
+                    type="serie"
                     sectionId="popular-movies"
                     sectionTitle="Popular Movies"
                     isLimitedSection={true}
@@ -35,7 +35,7 @@ function Home() {
                 />
 
                 <Section
-                    media="person"
+                    type="person"
                     sectionId="popular-movies"
                     sectionTitle="Popular Movies"
                     isLimitedSection={true}
