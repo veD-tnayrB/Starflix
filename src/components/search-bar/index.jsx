@@ -32,6 +32,7 @@ function Searchbar({ service, setSearchResults }) {
                 onSubmit={search}
             >
                 <input 
+                 autoComplete="off"
                  value={searchValue}
                  onChange={handleChanges}
                  placeholder="Search..."

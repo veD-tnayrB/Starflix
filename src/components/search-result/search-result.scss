@@ -1,6 +1,7 @@
 @use 'global/_variables.scss';
 
 .search-results {
+    width: 100%;
     align-items: flex-start;
 
     .title-container {
