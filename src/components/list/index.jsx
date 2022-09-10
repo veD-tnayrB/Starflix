@@ -20,7 +20,6 @@ function List({ items, children, type }) {
     ));
 
     return (
-
         <ul className="limited-list">
             {elements}
             {children}

@@ -1,0 +1,16 @@
+@use 'global/_variables.scss';
+
+.search-results {
+    align-items: flex-start;
+
+    .title-container {
+        padding: 1.5rem 1rem;
+        cursor: pointer;
+    
+        h3 {
+            text-decoration: none;
+            color: variables.$primary-text-color;
+            font-size: 2rem;
+        }
+    }
+}

@@ -1,11 +1,22 @@
-import Footer from "components/footer";
+import { useState } from "react";
+import { search } from "services/people";
 import Navbar from "components/navbar";
 import Searchbar from "components/search-bar";
-import Section from "components/section";
-import { getPopular, search } from "services/people";
+import SearchResult from "components/search-result";
+import Footer from "components/footer";
+import DefaultContent from "./components/default-content";
 
 export
-    function People() {
+function People() {
+    const [searchResults, setSearchResults] = useState({ results: [] });
+    const theresSearchResults = searchResults.results.length > 0;
+
+    const contentToDisplay = theresSearchResults ? 
+    <SearchResult
+    searchResults={searchResults} 
+    type="person" 
+    /> : 
+    <DefaultContent />;
 
     return (
         <>
@@ -13,14 +24,10 @@ export
             <main className="people-page">
                 <Searchbar 
                     service={search}
+                    setSearchResults={setSearchResults}
                 />
 
-                <Section
-                    type="person"
-                    sectionId="popular-people"
-                    sectionTitle="Most Popular People"
-                    service={getPopular}
-                />
+                {contentToDisplay}
             </main>
             <Footer />
         </>

@@ -1,48 +1,33 @@
-import { getAiring, getOnTheAir, getPopular, getTopRated, search } from "services/series";
-import Footer from "components/footer";
+import { useState } from "react";
+import { search } from "services/series";
 import Navbar from "components/navbar";
-import Loading from "components/loading";
-import Section from "components/section";
 import Searchbar from "components/search-bar";
+import SearchResult from "components/search-result";
+import DefaultContent from "./components/default-content";
+import Footer from "components/footer";
+
 
 export
 function Series() {
+    const [searchResults, setSearchResults] = useState({ results: [] });
+    const theresSearchResults = searchResults.results.length > 0;
+
+    const contentToDisplay = theresSearchResults ?
+        <SearchResult
+            searchResults={searchResults}
+            type="serie"
+        /> :
+        <DefaultContent />;
 
     return (
         <>
             <Navbar />
             <main className="series-page">
-                <Searchbar 
+                <Searchbar
                     service={search}
+                    setSearchResults={setSearchResults}
                 />
-
-                <Section
-                    type="serie"
-                    sectionId="popular-series"
-                    sectionTitle="Most Popular Series"
-                    service={getPopular}
-                />
-
-                <Section
-                    type="serie"
-                    sectionId="on-the-air"
-                    sectionTitle="On The Air"
-                    service={getOnTheAir}
-                />
-
-                <Section
-                    type="serie"
-                    sectionId="top-rated"
-                    sectionTitle="Top Rated Series"
-                    service={getTopRated}
-                />
-
-                <Section
-                    type="serie"
-                    sectionId="airing"
-                    sectionTitle="Airing"
-                    service={getAiring}
-                />
+                {contentToDisplay}
             </main>
             <Footer />
         </>

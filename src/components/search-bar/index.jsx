@@ -15,15 +15,14 @@ function Searchbar({ service, setSearchResults }) {
 
     function search(event) {
         event.preventDefault();
-
-        if (searchValue === '') return;
+        if (searchValue === '') return setSearchResults({ results: [] });
 
         setIsLoading(true);
 
         service(searchValue)
         .then(response => {
-            setIsLoading(false);
             setSearchResults(response);
+            setIsLoading(false);
         })
     }
 
