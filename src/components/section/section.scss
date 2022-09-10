@@ -47,30 +47,4 @@
             }
         }
     }
-    
-    .limited-list {
-        align-self: center;
-
-        height: auto;
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: .5rem;
-
-        .show-more-button {
-            background: variables.$fourth-color;
-        
-            width: 12rem;
-            height: 100%;
-            min-height: 18rem;
-        
-            padding: .2rem 0;
-        
-            .icon {
-                fill: variables.$primary-text-color;
-                font-size: 3rem;
-            }
-        }
-    }
 }

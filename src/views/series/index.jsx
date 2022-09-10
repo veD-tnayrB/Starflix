@@ -17,28 +17,28 @@ function Series() {
                 />
 
                 <Section
-                    media="serie"
+                    type="serie"
                     sectionId="popular-series"
                     sectionTitle="Most Popular Series"
                     service={getPopular}
                 />
 
                 <Section
-                    media="serie"
+                    type="serie"
                     sectionId="on-the-air"
                     sectionTitle="On The Air"
                     service={getOnTheAir}
                 />
 
                 <Section
-                    media="serie"
+                    type="serie"
                     sectionId="top-rated"
                     sectionTitle="Top Rated Series"
                     service={getTopRated}
                 />
 
                 <Section
-                    media="serie"
+                    type="serie"
                     sectionId="airing"
                     sectionTitle="Airing"
                     service={getAiring}

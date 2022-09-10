@@ -4,7 +4,7 @@ import { IMAGE_BASE_URL } from 'services/config';
 import '../media.scss';
 
 export
-function Movie({ movie }) {
+function Movie(props) {
 
     return (
         <li className="media-item">
@@ -12,12 +12,12 @@ function Movie({ movie }) {
                 <Link to="">
                         <img 
                             className="media-image"
-                            src={`${IMAGE_BASE_URL}${movie.poster_path}`} 
-                            alt={movie.title}
+                            src={`${IMAGE_BASE_URL}${props.poster_path}`} 
+                            alt={props.title}
                             loading="lazy"
                         />
                     <div className="media-info">
-                        {movie.title}
+                        {props.title}
                     </div>
                 </Link>
             </div>

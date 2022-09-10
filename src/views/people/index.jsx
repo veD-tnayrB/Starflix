@@ -16,7 +16,7 @@ export
                 />
 
                 <Section
-                    media="person"
+                    type="person"
                     sectionId="popular-people"
                     sectionTitle="Most Popular People"
                     service={getPopular}

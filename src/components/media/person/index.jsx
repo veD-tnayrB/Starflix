@@ -4,7 +4,7 @@ import { IMAGE_BASE_URL } from 'services/config';
 import '../media.scss';
 
 export
-function Person({ person }) {
+function Person(props) {
 
     return (
         <li className="media-item">
@@ -12,12 +12,12 @@ function Person({ person }) {
                 <Link to="">
                         <img
                             className="media-image"
-                            src={`${IMAGE_BASE_URL}${person.profile_path}`}
-                            alt={person.name}
+                            src={`${IMAGE_BASE_URL}${props.profile_path}`}
+                            alt={props.name}
                             loading="lazy"
                         />
                     <div className="media-info">
-                        {person.name}
+                        {props.name}
                     </div>
                 </Link>
             </div>
