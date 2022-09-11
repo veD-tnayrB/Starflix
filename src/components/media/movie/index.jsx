@@ -9,7 +9,7 @@ function Movie(props) {
     return (
         <li className="media-item">
             <div className="media">
-                <Link to="">
+                <Link to={`/movies/movie/${props.id}`}>
                         <img 
                             className="media-image"
                             src={`${IMAGE_BASE_URL}${props.poster_path}`} 

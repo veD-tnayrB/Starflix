@@ -28,3 +28,8 @@ export const getNowPlaying = async (signal, page) => {
     return response.json();
     
 }
+
+export const getDetails = async (signal, movieId) => {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}${API_KEY}`, { signal });
+    return response.json();
+}

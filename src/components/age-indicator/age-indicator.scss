@@ -1,0 +1,22 @@
+@use 'global/_variables.scss';
+
+.age-indicator {
+    .adult-indicator-container {
+        border: 5px solid variables.$error-color;
+        border-radius: 50%;
+        font-weight: bold;
+        color: variables.$primary-text-color;
+    
+        padding: .5rem .2rem;
+    }
+
+    .friendly-indicator-container {
+        border: 5px solid variables.$succes-color;
+        border-radius: 50%;
+        padding: .3rem .5rem;
+    
+        .icon {
+            font-size: 1.2rem;
+        }
+    }
+}

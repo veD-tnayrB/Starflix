@@ -9,7 +9,7 @@ function Person(props) {
     return (
         <li className="media-item">
             <div className="media">
-                <Link to="">
+                <Link to={`/people/person/${props.id}`}>
                         <img
                             className="media-image"
                             src={`${IMAGE_BASE_URL}${props.profile_path}`}

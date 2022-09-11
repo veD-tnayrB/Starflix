@@ -24,3 +24,8 @@ export const getAiring = async (signal, page) => {
     const response = await fetch(`${BASE_URL}tv/airing_today${API_KEY}&page=${page}`, { signal });
     return response.json();
 }
+
+export const getDetails = async (signal, serieId) => {
+    const response = await fetch(`${BASE_URL}tv/${serieId}${API_KEY}`, { signal });
+    return response.json();
+}
