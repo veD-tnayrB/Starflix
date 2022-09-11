@@ -1,4 +1,5 @@
-import './adultIndicator.scss';
+
+
 
 function AdultIndicator() {
 

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getPopular } from 'services/movies';
 import { IMAGE_BASE_URL } from 'services/config';
-import AdultIndicator from 'components/adult-indicator';
-import FriendlyIndicator from 'components/friendy-indicator';
+import AgeIndicator from 'components/age-indicator';
 import Loading from 'components/loading';
 
 import './hero.scss';
@@ -19,7 +18,6 @@ function Hero() {
     const [isLoading, setIsLoading] = useState(true);
     const backdropURL = `${IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
-    const ageIcon = popularMovie?.adult ? <AdultIndicator /> : <FriendlyIndicator />;
 
     useEffect(() => {
         setIsLoading(true);
@@ -41,7 +39,7 @@ function Hero() {
                 <div className="details-section">
                     <span>{releaseYear}</span>
                     <span>{popularMovie?.original_language}</span>
-                    {ageIcon}
+                    <AgeIndicator adult={popularMovie?.adult} />
                 </div>
                 <p className="overview">{popularMovie?.overview}</p>
             </div>

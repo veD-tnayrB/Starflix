@@ -7,25 +7,27 @@ import './navbar.scss';
 function Navbar() {
     const routesArray = Object.values(routes);
     const links = routesArray.map(route => (
-        <Link 
-         key={route.name}
-         {...route}
+        <Link
+            key={route.name}
+            {...route}
         />
     ))
 
     return (
-        <nav className="navbar">
-            <ul>
-                <div className="logo-container">
-                    <li>
-                        <Logo />
-                    </li>
-                </div>
-                <div className="links-container">
-                    {links}
-                </div>
-            </ul>
-        </nav>
+        <header>
+            <nav className="navbar">
+                <ul>
+                    <div className="logo-container">
+                        <li>
+                            <Logo />
+                        </li>
+                    </div>
+                    <div className="links-container">
+                        {links}
+                    </div>
+                </ul>
+            </nav>
+        </header>
     )
 }
 

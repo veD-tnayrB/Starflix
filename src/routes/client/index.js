@@ -17,7 +17,7 @@ const routes = {
     people: {
         route: '/people',
         name: 'People'
-    }
+    },
 };
 
 export default routes;

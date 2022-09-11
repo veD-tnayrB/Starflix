@@ -9,3 +9,8 @@ export const getPopular = async (signal, page) => {
     const response = await fetch(`${BASE_URL}person/popular${API_KEY}&page=${page}`, { signal });
     return response.json();
 }
+
+export const getDetails = async (signal, personId) => {
+    const response = await fetch(`${BASE_URL}person/${personId}${API_KEY}`, { signal });
+    return response.json();
+}
