@@ -33,3 +33,18 @@ export const getDetails = async (signal, movieId) => {
     const response = await fetch(`${BASE_URL}/movie/${movieId}${API_KEY}`, { signal });
     return response.json();
 }
+
+export const getReviews = async (signal, movieId) => {
+    const response = await fetch(`${BASE_URL}movie/${movieId}/reviews${API_KEY}`, { signal });
+    return response.json();
+}
+
+export const getSimilar = async (signal, movieId) => {
+    const response = await fetch(`${BASE_URL}movie/${movieId}/similar${API_KEY}`, { signal });
+    return response.json();
+}
+
+export const getCredits = async (signal, movieId) => {
+    const response = await fetch(`${BASE_URL}movie/${movieId}/credits${API_KEY}`, { signal });
+    return response.json();
+}

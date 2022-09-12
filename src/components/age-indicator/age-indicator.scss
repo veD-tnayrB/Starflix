@@ -13,6 +13,10 @@
     .friendly-indicator-container {
         border: 5px solid variables.$succes-color;
         border-radius: 50%;
+
+        width: -moz-fit-content;
+        width: fit-content;
+
         padding: .3rem .5rem;
     
         .icon {
