@@ -1,0 +1,46 @@
+@use 'global/_variables.scss';
+
+.reviews {
+    padding: 2rem;
+    align-items: flex-start;
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    ul {
+        li {
+            .review {
+                padding: .5rem 0;
+                margin: .8rem 0;
+
+                a {
+                    text-decoration: none;
+                    width: -moz-fit-content;
+                    width: fit-content;
+
+                    margin: .5rem 0;
+
+                    gap: .5rem;
+                    display: flex;
+                    align-items: center;
+
+                    .profile-img {
+                        border-radius: 50%;
+
+                        width: 3rem;
+                        height: 3rem;
+                    }
+
+                    .user-name {
+                        font-size: 1.2rem;
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
