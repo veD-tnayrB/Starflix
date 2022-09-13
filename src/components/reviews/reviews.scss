@@ -1,18 +1,15 @@
 @use 'global/_variables.scss';
 
 .reviews {
-    padding: 2rem;
     align-items: flex-start;
 
-    h3 {
-        font-size: 2.5rem;
-    }
-
     ul {
+        width: 100%;
+        padding: 0 2rem;
+
         li {
             .review {
-                padding: .5rem 0;
-                margin: .8rem 0;
+                margin: 0 0 1.5rem 0;
 
                 a {
                     text-decoration: none;

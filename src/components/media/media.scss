@@ -1,6 +1,8 @@
 @use 'global/_variables.scss';
 
 .media-item {
+    height: fit-content;
+
     .media {
         background: variables.$fourth-color;
 
@@ -25,6 +27,7 @@
             bottom: 100%;
 
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
 
@@ -32,6 +35,13 @@
             transition: bottom .2s linear;
             z-index: 3;
             
+            .name {
+                margin: 0 0 .3rem 0;
+            }
+
+            .charge {
+                color: variables.$secondary-color;
+            }
         }
 
         .media-image {

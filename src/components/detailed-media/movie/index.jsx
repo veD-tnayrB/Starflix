@@ -4,11 +4,12 @@ import { getCredits, getDetails, getReviews, getSimilar } from "services/movies"
 import Navbar from "components/navbar";
 import Hero from "./Hero";
 import Reviews from "../../reviews/Reviews";
-import Similar from "./Similar";
+import Similar from "../../similar/Similar";
 import Footer from "components/footer";
+import Credits from "components/credits/Credits";
 
 import '../detailed-media.scss';
-import Credits from "components/credits/Credits";
+
 
 export default
     function DetailedMovie() {
@@ -29,7 +30,7 @@ export default
             })
 
         return () => controller.abort();
-    }, []);
+    }, [movieId]);
 
 
     return (
@@ -37,15 +38,9 @@ export default
             <Navbar />
             <main className="detailed-page">
                 <Hero movie={movie} />
-                <Reviews 
-                    service={getReviews} 
-                    id={movieId} 
-                />
-
                 <Credits 
                     id={movieId}
                     service={getCredits}
-                    type="movie"
                 />
 
                 <Similar 
@@ -53,6 +48,11 @@ export default
                     service={getSimilar}
                     id={movieId}
                     type="movie"
+                />
+
+                <Reviews 
+                    service={getReviews} 
+                    id={movieId} 
                 />
             </main>
             <Footer />

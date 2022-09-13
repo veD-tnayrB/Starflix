@@ -5,6 +5,7 @@ import '../media.scss';
 
 export
 function Person(props) {
+    console.log(props)
 
     return (
         <li className="media-item">
@@ -17,7 +18,8 @@ function Person(props) {
                             loading="lazy"
                         />
                     <div className="media-info">
-                        {props.name}
+                        <p className="name">{props.name}</p>
+                        <p className="charge">{props.known_for_department}</p>
                     </div>
                 </Link>
             </div>

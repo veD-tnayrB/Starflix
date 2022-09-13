@@ -1,10 +1,8 @@
+import { useState, useEffect } from "react";
 import List from "components/list";
-import { useState } from "react";
-import { useEffect } from "react";
-import Credit from "./Credit";
 
 export default
-function Credits({ type, id, service }) {
+function Credits({ id, service }) {
     const [credits, setCredits] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,19 +19,13 @@ function Credits({ type, id, service }) {
         return () => controller.abort();
     }, []);
 
-    const creditElements = credits.map(credit => (
-        <Credit 
-            key={credit.id}
-            credit={credit}
-        />
-    ));
-
     return (
-        <>
+        <section>
+            <h3>People involved</h3>
             <List 
-                items={creditElements}
-                type={type}
+                items={credits}
+                type="person"
             />
-        </>
+        </section>
     )
 }
