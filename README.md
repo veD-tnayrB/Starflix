@@ -11,7 +11,9 @@ Starflix is a platform where you can see advanced information about your movies,
 
 ✅ What is the project created with?
 - 🌹 ReactJS
-- 🎁 Axios
+- 🎁 Fetch
+- 👾 TMDB API
+- 👽 React Router DOM
 
 ## Author
 - 🐦 [BryantDev_](https://twitter.com/BryantDev_)
