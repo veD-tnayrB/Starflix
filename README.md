@@ -14,6 +14,7 @@ Starflix is a platform where you can see advanced information about your movies,
 - 🎁 Fetch
 - 👾 TMDB API
 - 👽 React Router DOM
+- 😍 MUI Icons
 
 ## Author
 - 🐦 [BryantDev_](https://twitter.com/BryantDev_)
