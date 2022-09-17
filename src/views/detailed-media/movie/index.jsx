@@ -4,11 +4,12 @@ import { getCredits, getDetails, getReviews, getSimilar } from "services/movies"
 import Navbar from "components/navbar";
 import Hero from "./Hero";
 import Reviews from "../../../components/reviews/Reviews";
-import Similar from "../../../components/similar/Similar";
+import Similar from "../../../components/similar";
 import Footer from "components/footer";
-import Credits from "components/credits/Credits";
+import Credits from "components/credits";
 
 import '../detailed-media.scss';
+import Loading from "components/loading";
 
 
 export default
@@ -32,6 +33,8 @@ export default
         return () => controller.abort();
     }, [movieId]);
 
+
+    if (isLoading) return <Loading />;
 
     return (
         <>

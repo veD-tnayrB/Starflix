@@ -1,6 +1,7 @@
+import Loading from "components/loading";
 import { useState } from "react";
 import { useEffect } from "react"
-import Review from "./Review";
+import Review from ".";
 
 import './reviews.scss';
 
@@ -23,7 +24,10 @@ function Reviews({ service, id }) {
         })
 
         return () => controller.abort();
-    }, []);
+    }, [id, service]);
+
+    if (isLoading) return <Loading />;
+    if (!theresReviews) return null;
 
     const reviewsElements = theresReviews && reviews.map(review => (
         <Review 

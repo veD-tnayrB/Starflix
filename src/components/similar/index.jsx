@@ -1,4 +1,5 @@
 import List from "components/list";
+import Loading from "components/loading";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -6,6 +7,7 @@ export default
 function Similar({ service, id, type, title }) {
     const [similar, setSimilar] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const theresSimilars = similar.length > 0;
 
     useEffect(() => {
         const controller = new AbortController();
@@ -20,7 +22,10 @@ function Similar({ service, id, type, title }) {
             })
 
         return () => controller.abort();
-    }, []);
+    }, [id, service]);
+
+    if (isLoading) return <Loading />;
+    if (!theresSimilars) return null;
 
     return (
         <section>

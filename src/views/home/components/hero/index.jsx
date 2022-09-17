@@ -5,6 +5,7 @@ import AgeIndicator from 'components/age-indicator';
 import Loading from 'components/loading';
 
 import './hero.scss';
+import { Link } from 'react-router-dom';
 
 const DEFAULT_VALUE = {
     backdrop_path: '',
@@ -13,7 +14,7 @@ const DEFAULT_VALUE = {
 }
 
 export default
-function Hero() {
+    function Hero() {
     const [popularMovie, setPopularMovie] = useState(DEFAULT_VALUE);
     const [isLoading, setIsLoading] = useState(true);
     const backdropURL = `${IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
@@ -35,7 +36,12 @@ function Hero() {
     return (
         <>
             <div className="movie-info-container">
-                <h2 className="title">{popularMovie?.title}</h2>
+                <Link
+                    className="movie-link"
+                    to={`/movies/movie/${popularMovie.id}`}
+                >
+                    <h2 className="title">{popularMovie?.title}</h2>
+                </Link>
                 <div className="details-section">
                     <span>{releaseYear}</span>
                     <span>{popularMovie?.original_language}</span>

@@ -9,6 +9,7 @@ function Review({ review }) {
                 <a 
                     href={review.url}
                     target="_blank"
+                    rel="noreferrer"
                 >
                     <AccountCircleIcon className="profile-img" />
 

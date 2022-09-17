@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom"
 import { getCredits, getDetails, getReviews, getSimilar } from "services/series";
 import Hero from "./Hero";
 import Reviews from "components/reviews/Reviews";
-import Credits from "components/credits/Credits";
-import Similar from "components/similar/Similar";
+import Credits from "components/credits";
+import Similar from "components/similar";
 
 import '../detailed-media.scss';
 import Navbar from "components/navbar";
 import Footer from "components/footer";
+import Loading from "components/loading";
 
 
 export default
@@ -32,6 +33,8 @@ function DetailedSerie() {
 
         return () => controller.abort();
     }, [serieId]);
+
+    if (isLoading) return <Loading />;
 
     return (
         <>

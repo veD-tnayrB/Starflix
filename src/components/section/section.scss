@@ -12,6 +12,7 @@
     }
 
     .title-container {
+        width: 100%;
         padding: 1.5rem 1rem;
         cursor: pointer;
         
@@ -24,6 +25,7 @@
         .title-link {
             align-self: start;
             text-decoration: none;   
+            width: 100%;
 
             display: flex;
             align-items: center;

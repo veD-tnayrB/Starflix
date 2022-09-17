@@ -32,7 +32,7 @@ function Section({ service, sectionTitle, sectionId, isLimitedSection = false, t
             });
 
         return () => controller.abort();
-    }, [page])
+    }, [page, service, isLimitedSection])
 
     return (
         <section>
@@ -48,6 +48,7 @@ function Section({ service, sectionTitle, sectionId, isLimitedSection = false, t
                 >
                     {
                         !isLimitedSection &&
+                        !isLoading &&
                         <ShowMoreButton
                             setPage={setPage}
                             isLoading={isLoading}

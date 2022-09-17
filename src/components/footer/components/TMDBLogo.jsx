@@ -5,7 +5,7 @@ export default
 function TMDBLogo() {
 
     return (
-        <a target="_BLANK" href="https://www.themoviedb.org/">
+        <a target="_blank" rel="noreferrer" href="https://www.themoviedb.org/">
             <img 
             title="The Movie Data Base" 
             alt="the movie data base" 
