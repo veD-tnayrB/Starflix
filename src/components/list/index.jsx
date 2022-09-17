@@ -1,3 +1,4 @@
+import uniqid from 'uniqid';
 import { Movie, Person, Serie } from 'components/media';
 import './list.scss';
 
@@ -14,7 +15,7 @@ function List({ items, children, type }) {
 
     const elements = theresItems && MediaToBeDisplayed && items.map(item => (
         <MediaToBeDisplayed
-            key={item.id}
+            key={uniqid()}
             {...item}
         />
     ));

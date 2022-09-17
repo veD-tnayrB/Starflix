@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import List from "components/list";
 
 export default
-function Credits({ id, service }) {
+function Credits({ id, service, type, title }) {
     const [credits, setCredits] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,10 +21,10 @@ function Credits({ id, service }) {
 
     return (
         <section>
-            <h3>People involved</h3>
+            <h3>{title}</h3>
             <List 
                 items={credits}
-                type="person"
+                type={type}
             />
         </section>
     )

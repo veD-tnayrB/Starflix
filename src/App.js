@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, Movies, Series, People } from 'views';
+import DetailedMovie from "views/detailed-media/movie";
+import DetailedSerie from "views/detailed-media/serie";
+import DetailedPerson from "views/detailed-media/person";
 import routes from "routes/client";
 
 import 'global/styles.scss';
-import DetailedMovie from "components/detailed-media/movie";
-import DetailedSerie from "components/detailed-media/serie";
-import DetailedPerson from "components/detailed-media/person";
 
 function App() {
     const { home, movies, series, people } = routes;

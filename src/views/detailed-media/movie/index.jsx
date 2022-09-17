@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { getCredits, getDetails, getReviews, getSimilar } from "services/movies";
 import Navbar from "components/navbar";
 import Hero from "./Hero";
-import Reviews from "../../reviews/Reviews";
-import Similar from "../../similar/Similar";
+import Reviews from "../../../components/reviews/Reviews";
+import Similar from "../../../components/similar/Similar";
 import Footer from "components/footer";
 import Credits from "components/credits/Credits";
 
@@ -39,8 +39,10 @@ export default
             <main className="detailed-page">
                 <Hero movie={movie} />
                 <Credits 
+                    title="People involved"
                     id={movieId}
                     service={getCredits}
+                    type="person"
                 />
 
                 <Similar 

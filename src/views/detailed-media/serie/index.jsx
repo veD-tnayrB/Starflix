@@ -41,6 +41,7 @@ function DetailedSerie() {
                 <Credits
                     id={serieId}
                     service={getCredits}
+                    type="person"
                 />
 
                 <Similar
