@@ -21,7 +21,7 @@ function DetailedPerson() {
         })
 
         return () => controller.abort();
-    }, []);
+    }, [personId]);
 
     return (
         <>

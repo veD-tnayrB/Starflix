@@ -12,6 +12,7 @@ function Hero({ person }) {
             <img
                 className="poster"
                 src={`${IMAGE_BASE_URL}${person.profile_path}`}
+                alt={person.name}
             />
 
             <div className="info-container">

@@ -3,7 +3,6 @@ import { IMAGE_BASE_URL } from "services/config";
 
 export default
 function Hero({ serie }) {
-    console.log(1, serie);
     const releasedClass = serie.status === 'Released' ? 'released' : 'no-released';
     
 
@@ -12,11 +11,13 @@ function Hero({ serie }) {
             <img
                 className="backdrop"
                 src={`${IMAGE_BASE_URL}${serie.backdrop_path}`}
+                alt={serie.name}
             />
 
             <img
                 className="poster"
                 src={`${IMAGE_BASE_URL}${serie.poster_path}`}
+                alt={serie.name}
             />
 
             <div className="info-container">

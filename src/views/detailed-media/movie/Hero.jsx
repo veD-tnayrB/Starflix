@@ -10,11 +10,13 @@ function Hero({ movie }) {
             <img
                 className="backdrop"
                 src={`${IMAGE_BASE_URL}${movie.backdrop_path}`}
+                alt={movie.title}
             />
 
             <img
                 className="poster"
                 src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                alt={movie.title}
             />
 
             <div className="info-container">
