@@ -1,5 +1,5 @@
 import AgeIndicator from "components/age-indicator";
-import { IMAGE_BASE_URL } from "services/config";
+import { NORMAL_IMAGE_BASE_URL, ORIGINAL_IMAGE_BASE_URL } from "services/config";
 
 export default
 function Hero({ serie }) {
@@ -10,13 +10,13 @@ function Hero({ serie }) {
         <header className="header">
             <img
                 className="backdrop"
-                src={`${IMAGE_BASE_URL}${serie.backdrop_path}`}
+                src={`${ORIGINAL_IMAGE_BASE_URL}${serie.backdrop_path}`}
                 alt={serie.name}
             />
 
             <img
                 className="poster"
-                src={`${IMAGE_BASE_URL}${serie.poster_path}`}
+                src={`${NORMAL_IMAGE_BASE_URL}${serie.poster_path}`}
                 alt={serie.name}
             />
 

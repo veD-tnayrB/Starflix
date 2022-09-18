@@ -1,4 +1,4 @@
-import { IMAGE_BASE_URL } from "services/config"
+import { NORMAL_IMAGE_BASE_URL } from "services/config"
 
 export default
 function Hero({ person }) {
@@ -11,7 +11,7 @@ function Hero({ person }) {
         <header className="header">
             <img
                 className="poster"
-                src={`${IMAGE_BASE_URL}${person.profile_path}`}
+                src={`${NORMAL_IMAGE_BASE_URL}${person.profile_path}`}
                 alt={person.name}
             />
 

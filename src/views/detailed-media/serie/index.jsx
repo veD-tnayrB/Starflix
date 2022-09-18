@@ -45,6 +45,7 @@ function DetailedSerie() {
                     id={serieId}
                     service={getCredits}
                     type="person"
+                    title="People Involved"
                 />
 
                 <Similar

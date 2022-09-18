@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from 'services/config';
+import { NORMAL_IMAGE_BASE_URL } from 'services/config';
 
 import '../media.scss';
 
@@ -12,7 +12,7 @@ function Movie(props) {
                 <Link to={`/movies/movie/${props.id}`}>
                         <img 
                             className="media-image"
-                            src={`${IMAGE_BASE_URL}${props.poster_path}`} 
+                            src={`${NORMAL_IMAGE_BASE_URL}${props.poster_path}`} 
                             alt={props.title}
                             loading="lazy"
                         />

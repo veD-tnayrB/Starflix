@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getPopular } from 'services/movies';
-import { IMAGE_BASE_URL } from 'services/config';
+import { ORIGINAL_IMAGE_BASE_URL } from 'services/config';
 import AgeIndicator from 'components/age-indicator';
 import Loading from 'components/loading';
 
@@ -17,7 +17,7 @@ export default
     function Hero() {
     const [popularMovie, setPopularMovie] = useState(DEFAULT_VALUE);
     const [isLoading, setIsLoading] = useState(true);
-    const backdropURL = `${IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
+    const backdropURL = `${ORIGINAL_IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
 
     useEffect(() => {
