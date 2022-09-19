@@ -6,6 +6,7 @@ import Footer from "components/footer";
 import Hero from "./components/hero";
 import Section from "components/section";
 
+
 import './home.scss';
 
 export

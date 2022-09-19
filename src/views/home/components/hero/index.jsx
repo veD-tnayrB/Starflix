@@ -16,22 +16,17 @@ const DEFAULT_VALUE = {
 export default
     function Hero() {
     const [popularMovie, setPopularMovie] = useState(DEFAULT_VALUE);
-    const [isLoading, setIsLoading] = useState(true);
     const backdropURL = `${ORIGINAL_IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
 
     useEffect(() => {
-        setIsLoading(true);
-
         getPopular()
             .then(response => {
                 const firstMovie = response.results[0];
                 setPopularMovie(firstMovie);
-                setIsLoading(false);
             })
     }, [])
 
-    if (isLoading) return <Loading />;
 
     return (
         <>
@@ -54,6 +49,7 @@ export default
                 className="backdrop"
                 alt={popularMovie?.title}
                 src={backdropURL}
+                loading="lazy"
             />
         </>
     )

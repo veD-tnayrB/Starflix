@@ -6,7 +6,6 @@ import SearchResult from "components/search-result";
 import DefaultContent from "./components/default-content";
 import Footer from "components/footer";
 
-
 export
 function Series() {
     const [searchResults, setSearchResults] = useState({ results: [] });

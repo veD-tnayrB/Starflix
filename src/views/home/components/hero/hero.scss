@@ -9,6 +9,8 @@
 }
 
 section.hero-section {
+    width: 100%;
+
     .movie-info-container {
         background: variables.$primary-color;
     
@@ -94,6 +96,10 @@ section.hero-section {
             &::after {
                 content: '';
                 display: none;
+            }
+
+            .overview {
+                width: 100%;
             }
         }
     }
