@@ -33,6 +33,7 @@ function Similar({ service, id, type, title }) {
             <List
                 items={similar}
                 type={type}
+                isLoading={isLoading}
             />
         </section>
     )

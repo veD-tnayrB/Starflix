@@ -25,4 +25,54 @@
             font-size: 3rem;
         }
     }
+
+    .preload-element {
+        background: variables.$fourth-color;
+
+        width: 12rem;
+        height: 6.34rem;
+        min-height: 18rem;
+
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            background: variables.$dark-gray-color;
+            box-shadow: 0 0 1rem 5px variables.$dark-gray-color;
+            content: '';
+
+            width: 15rem;
+            height: 5%;
+
+            display: block;
+            transform: rotate(20deg);
+
+            position: absolute;
+            bottom: 0%;
+        
+            animation: load .5s ease-out infinite;
+        }
+    }
+}
+
+@keyframes load {
+    0% {
+        bottom: -50%;
+    }
+
+    25% {
+        bottom: 25%;
+    }
+
+    50% {
+        bottom: 50%;
+    }
+
+    75% {
+        bottom: 75%;
+    }
+
+    100% {
+        bottom: 100%;
+    }
 }

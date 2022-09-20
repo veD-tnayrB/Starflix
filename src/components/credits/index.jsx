@@ -30,6 +30,7 @@ function Credits({ id, service, type, title }) {
             <List 
                 items={credits}
                 type={type}
+                isLoading={isLoading}
             />
         </section>
     )

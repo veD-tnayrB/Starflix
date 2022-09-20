@@ -29,16 +29,16 @@ function Home() {
 
                 <Section
                     type="serie"
-                    sectionId="popular-movies"
-                    sectionTitle="Popular Movies"
+                    sectionId="popular-series"
+                    sectionTitle="Popular Series"
                     isLimitedSection={true}
                     service={getPopularSeries}
                 />
 
                 <Section
                     type="person"
-                    sectionId="popular-movies"
-                    sectionTitle="Popular Movies"
+                    sectionId="popular-people"
+                    sectionTitle="Popular People"
                     isLimitedSection={true}
                     service={getPopularPeople}
                 />

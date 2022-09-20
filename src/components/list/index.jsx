@@ -1,5 +1,6 @@
 import uniqid from 'uniqid';
 import { Movie, Person, Serie } from 'components/media';
+import Preload from './preaload';
 import './list.scss';
 
 const MEDIAS = {
@@ -9,7 +10,7 @@ const MEDIAS = {
 }
 
 export default
-function List({ items, children, type }) {
+function List({ items, children, type, isLoading = false }) {
     const MediaToBeDisplayed = MEDIAS[type];
     const theresItems = items.length > 0;
 
@@ -20,10 +21,11 @@ function List({ items, children, type }) {
         />
     ));
 
+    const content = isLoading ? <Preload /> : <>{elements} {children}</>;
+
     return (
         <ul className="limited-list">
-            {elements}
-            {children}
+            {content}
         </ul>
     )
 }

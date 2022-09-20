@@ -45,6 +45,7 @@ function Section({ service, sectionTitle, sectionId, isLimitedSection = false, t
                 <List
                     items={results}
                     type={type}
+                    isLoading={isLoading}
                 >
                     {
                         !isLimitedSection &&
