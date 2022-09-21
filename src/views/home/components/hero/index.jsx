@@ -26,7 +26,7 @@ function Hero() {
             })
     }, [])
 
-
+    console.log(1, popularMovie)
     return (
         <>
             <div className="movie-info-container">
@@ -39,7 +39,7 @@ function Hero() {
                 <div className="details-section">
                     <span>{releaseYear}</span>
                     <span>{popularMovie?.original_language}</span>
-                    <AgeIndicator adult={popularMovie?.adult} />
+                    {popularMovie?.overview && <AgeIndicator adult={popularMovie?.adult} />}
                 </div>
                 <p className="overview">{popularMovie?.overview}</p>
             </div>
