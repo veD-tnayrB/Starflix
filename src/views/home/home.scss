@@ -12,3 +12,11 @@ main {
         align-items: center;
     }
 }
+
+@media (max-width: 1024px) {
+    main {
+        section.hero-section {
+            height: 70vh;
+        }
+    }
+}

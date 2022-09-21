@@ -4,7 +4,7 @@
 
 .backdrop {
     object-fit: cover;
-    width: 65%;
+    width: 45%;
     height: 100%;
 }
 
@@ -14,7 +14,7 @@ section.hero-section {
     .movie-info-container {
         background: variables.$primary-color;
     
-        width: 35%;
+        width: 55%;
         height: 100%;
     
         padding: 0 .5rem 2rem 2rem;
@@ -74,6 +74,7 @@ section.hero-section {
 
 @media (max-width: 1024px) {
     section.hero-section {
+        height: 80vh;
 
         display: flex;
         flex-direction: column;
@@ -87,10 +88,11 @@ section.hero-section {
             background: variables.$tranparent-background;
 
             width: 100%;
+            max-height: 100%;
             height: auto;
 
             padding: 2rem;
-
+            
             position: absolute;
 
             &::after {
@@ -100,6 +102,8 @@ section.hero-section {
 
             .overview {
                 width: 100%;
+                overflow-y: scroll;
+                max-lines: 10;                
             }
         }
     }
