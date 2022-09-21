@@ -2,6 +2,7 @@ import uniqid from 'uniqid';
 import { Movie, Person, Serie } from 'components/media';
 import Preload from './preaload';
 import './list.scss';
+import { memo } from 'react';
 
 const MEDIAS = {
     movie: Movie,
@@ -9,7 +10,6 @@ const MEDIAS = {
     person: Person
 }
 
-export default
 function List({ items, children, type, isLoading = false }) {
     const MediaToBeDisplayed = MEDIAS[type];
     const theresItems = items.length > 0;
@@ -29,3 +29,5 @@ function List({ items, children, type, isLoading = false }) {
         </ul>
     )
 }
+
+export default memo(List);

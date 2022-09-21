@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { getPopular } from 'services/movies';
 import { ORIGINAL_IMAGE_BASE_URL } from 'services/config';
 import AgeIndicator from 'components/age-indicator';
@@ -13,8 +13,7 @@ const DEFAULT_VALUE = {
     adult: false
 }
 
-export default
-    function Hero() {
+function Hero() {
     const [popularMovie, setPopularMovie] = useState(DEFAULT_VALUE);
     const backdropURL = `${ORIGINAL_IMAGE_BASE_URL}${popularMovie?.backdrop_path}`;
     const releaseYear = popularMovie?.release_date.split('-')[0];
@@ -54,3 +53,5 @@ export default
         </>
     )
 }
+
+export default memo(Hero);
