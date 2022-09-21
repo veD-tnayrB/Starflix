@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-const TIME = 2000;
+const TIME = 1000;
 
 export default
 function useGlobalLoading() {
