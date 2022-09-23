@@ -9,9 +9,11 @@
     align-items: center;
 
     input {
-        outline: transparent;
+        background: variables.$fourth-color;
+        border: none;
+        color: variables.$primary-text-color;
         font-size: 1.2rem;
-        color: variables.$primary-color;
+        outline: transparent;
 
         width: 100%;
         padding: .6rem;
