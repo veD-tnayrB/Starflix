@@ -2,84 +2,108 @@
 
 footer {
     background: variables.$primary-color;
-    padding: 4rem 0;
+    padding: 4rem 0 1rem 0;
 
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 
-    .credits-zone {
-        width: 20%;
+    .copyright {
+        color: variables.$gray-color;
+        padding: 1rem 0 -2rem 0;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        a {
+            text-decoration: none;
+            padding: 0 0 0 .5rem;
 
-        p {
-            font-size: .8rem;
-            color: variables.$gray-color;
-        }
-
-        .starflix-credits {
-            margin: 0 0 2rem 0;
-
-            .logo-container {
-                margin: 0 0 .5rem 0;
-                
-                .logo-icon {
-                    font-size: 2.2rem;
-                }
-
-                .logo-text {
-                    font-size: 2rem;
-                }
-            }
-        }
-
-        .tmdb-credits {
-            img {
-                width: 10rem;
-                margin: 0 0 .5rem 0;
+            &:hover {
+                text-decoration: underline;
             }
         }
     }
 
-    .pages-section {
+    .first-row {
         display: flex;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
+        justify-content: space-around;
 
-        .page-information {
-            padding: .8rem 1rem;
-            
-            h4 {
-                font-size: 1.6rem;
-                margin: 0 0 1rem 0;
+        .credits-zone {
+            width: 20%;
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+    
+            p {
+                font-size: .8rem;
+                color: variables.$gray-color;
+            }
+
+            a {
+                text-decoration: none;
             }
     
-            ul {
-                li {
-                    margin: .8rem 0;
+            .starflix-credits {
+                margin: 0 0 2rem 0;
     
-                    a {
-                        font-size: 1rem;
-                        text-decoration: none;
+                .logo-container {
+                    margin: 0 0 .5rem 0;
+                    
+                    .logo-icon {
+                        font-size: 2.2rem;
+                    }
     
-                        span {
-                            color: variables.$gray-color;
-                        }
+                    .logo-text {
+                        font-size: 2rem;
+                    }
+                }
+            }
     
-                        &:hover {
+            .tmdb-credits {
+                img {
+                    width: 10rem;
+                    margin: 0 0 .5rem 0;
+                }
+            }
+        }
+
+        .pages-section {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
     
+            .page-information {
+                padding: .8rem 1rem;
+                
+                h4 {
+                    font-size: 1.6rem;
+                    margin: 0 0 1rem 0;
+                }
+        
+                ul {
+                    li {
+                        margin: .8rem 0;
+        
+                        a {
+                            font-size: 1rem;
+                            text-decoration: none;
+        
                             span {
-                                color: variables.$primary-text-color;
+                                color: variables.$gray-color;
+                            }
+        
+                            &:hover {
+        
+                                span {
+                                    color: variables.$primary-text-color;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
+    }   
 }
 
 @media (max-width: 1025px ) {
