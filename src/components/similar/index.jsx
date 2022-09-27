@@ -24,7 +24,6 @@ function Similar({ service, id, type, title }) {
         return () => controller.abort();
     }, [id, service]);
 
-    if (isLoading) return <Loading />;
     if (!theresSimilars) return null;
 
     return (

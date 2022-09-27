@@ -21,7 +21,6 @@ function Credits({ id, service, type, title }) {
         return () => controller.abort();
     }, [id, service]);
 
-    if (isLoading) return <Loading />;
     if (!theresCredits) return null;
 
     return (

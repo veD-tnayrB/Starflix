@@ -34,8 +34,6 @@ function DetailedSerie() {
         return () => controller.abort();
     }, [serieId]);
 
-    if (isLoading) return <Loading />;
-
     return (
         <>
             <Navbar />

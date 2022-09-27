@@ -26,7 +26,6 @@ function Reviews({ service, id }) {
         return () => controller.abort();
     }, [id, service]);
 
-    if (isLoading) return <Loading />;
     if (!theresReviews) return null;
 
     const reviewsElements = theresReviews && reviews.map(review => (

@@ -33,9 +33,6 @@ export default
         return () => controller.abort();
     }, [movieId]);
 
-
-    if (isLoading) return <Loading />;
-
     return (
         <>
             <Navbar />

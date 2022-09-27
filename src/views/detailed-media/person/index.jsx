@@ -28,8 +28,6 @@ function DetailedPerson() {
         return () => controller.abort();
     }, [personId]);
 
-    if (isLoading) return <Loading />;
-
     return (
         <>
             <Navbar />
