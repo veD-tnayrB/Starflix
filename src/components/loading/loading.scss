@@ -1,27 +1,5 @@
 @use 'global/_variables.scss';
 
-.loading {
-    height: 100%;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    align-items: center;
-
-    span {
-        font-size: 1.2rem;
-        margin: 0 0 .5rem 0;
-    }
-
-    .loading-icon {
-        font-size: 2rem;
-        fill: variables.$primary-text-color;
-        animation: loading .5s ease-in-out infinite;
-    }
-}
-
 .loading-icon {
     font-size: 2rem;
     fill: variables.$primary-text-color;
