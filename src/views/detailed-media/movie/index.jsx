@@ -9,25 +9,20 @@ import Footer from "components/footer";
 import Credits from "components/credits";
 
 import '../detailed-media.scss';
-import Loading from "components/loading";
 
 
 export default
     function DetailedMovie() {
     const [movie, setMovie] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
     const { movieId } = useParams();
 
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        setIsLoading(true);
-
         getDetails(signal, movieId)
             .then(response => {
                 setMovie(response);
-                setIsLoading(false);
             })
 
         return () => controller.abort();

@@ -10,25 +10,20 @@ import Similar from "components/similar";
 import '../detailed-media.scss';
 import Navbar from "components/navbar";
 import Footer from "components/footer";
-import Loading from "components/loading";
 
 
 export default
 function DetailedSerie() {
     const [serie, setSerie] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
     const { serieId } = useParams();
 
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        setIsLoading(true);
-
         getDetails(signal, serieId)
             .then(response => {
                 setSerie(response);
-                setIsLoading(false);
             })
 
         return () => controller.abort();

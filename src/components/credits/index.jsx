@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import List from "components/list";
-import Loading from "components/loading";
 
 export default
 function Credits({ id, service, type, title }) {

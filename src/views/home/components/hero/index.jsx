@@ -2,7 +2,6 @@ import { useState, useEffect, memo } from 'react';
 import { getPopular } from 'services/movies';
 import { ORIGINAL_IMAGE_BASE_URL } from 'services/config';
 import AgeIndicator from 'components/age-indicator';
-import Loading from 'components/loading';
 
 import './hero.scss';
 import { Link } from 'react-router-dom';
