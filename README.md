@@ -16,11 +16,8 @@ Starflix is a platform where you can see advanced information about your movies,
 - 👽 React Router DOM
 - 😍 MUI Icons
 
-## 🤩 Status
-[![Netlify Status](https://api.netlify.com/api/v1/badges/155d9d27-b1e0-4709-b65e-485d2f83c850/deploy-status)](https://app.netlify.com/sites/starflx/deploys)
 
 ## Author
-- 🐦 [BryantDev_](https://twitter.com/BryantDev_)
 - 🐙 [veD-tnayrB](https://github.com/veD-tnayrB/)
 
 <br />
